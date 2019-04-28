@@ -1,0 +1,113 @@
+defaults: &defaults
+  working_directory: /nerves/build
+  docker:
+    - image: nervesproject/nerves_system_br:1.7.1
+  environment:
+    ENV: CI
+    ELIXIR_VERSION: 1.8.1-otp-21
+
+install_elixir: &install_elixir
+  run:
+    name: Install Elixir
+    command: |
+      wget https://repo.hex.pm/builds/elixir/v$ELIXIR_VERSION.zip
+      unzip -d /usr/local/elixir v$ELIXIR_VERSION.zip
+      echo 'export PATH=/usr/local/elixir/bin:$PATH' >> $BASH_ENV
+
+install_hex_rebar: &install_hex_rebar
+  run:
+    name: Install hex and rebar
+    command: |
+      mix local.hex --force
+      mix local.rebar --force
+
+install_nerves_bootstrap: &install_nerves_bootstrap
+  run:
+    name: Install nerves_bootstrap
+    command: |
+      mix archive.install hex nerves_bootstrap --force
+
+install_ghr: &install_ghr
+  run:
+    name: Install ghr (Github Releases)
+    command: |
+      wget https://github.com/tcnksm/ghr/releases/download/v0.9.0/ghr_v0.9.0_linux_amd64.tar.gz
+      tar xf ghr_v0.9.0_linux_amd64.tar.gz
+      ln -sf ghr_v0.9.0_linux_amd64/ghr .
+
+version: 2.0
+
+jobs:
+  build_rpi3a:
+    <<: *defaults
+    steps:
+      - checkout
+      - <<: *install_elixir
+      - <<: *install_hex_rebar
+      - <<: *install_nerves_bootstrap
+      - run: mix deps.get
+      - run: mix firmware
+      - run: mix firmware.image circuits_quickstart-rpi3a.img
+      - run: zip circuits_quickstart-rpi3a.zip circuits_quickstart-rpi3a.img
+      - run:
+          name: Create artifact dir
+          command: mkdir -p /nerves/deploy/system/artifacts
+      - run:
+          name: Copy CHANGELOG
+          command: cp ./CHANGELOG.md /nerves/deploy/system/CHANGELOG.md
+
+      - run:
+          name: Create artifacts
+          command: |
+            if [ -n "$CIRCLE_TAG" ]; then
+              TAG=$CIRCLE_TAG
+            else
+              TAG=$CIRCLE_SHA1
+            fi
+            mix nerves.artifact ${CIRCLE_PROJECT_REPONAME} --path /nerves/deploy/system/artifacts
+      - store_artifacts:
+          path: /nerves/deploy/system/artifacts
+          destination: system
+      - store_artifacts:
+          path: /root/.nerves/dl
+          destination: dl
+      - save_cache:
+          key: nerves/deploy/system-{{ .Revision }}-{{ .Environment.CIRCLE_TAG }}
+          paths:
+            - "/nerves/deploy/system"
+
+  deploy_system:
+    <<: *defaults
+    steps:
+      - restore_cache:
+          key: nerves/deploy/system-{{ .Revision }}-{{ .Environment.CIRCLE_TAG }}
+      - <<: *install_ghr
+      - run:
+          name: Create release notes
+          command: grep -Pazo "(?s)(?<=## ${CIRCLE_TAG})[^#]+" /nerves/deploy/system/CHANGELOG.md | sed '/./,$!d' > /nerves/deploy/system/RELEASE_NOTES
+      - run:
+          name: Deploy artifacts to Github
+          command: ./ghr -draft -t $GITHUB_TOKEN -u $CIRCLE_PROJECT_USERNAME -r $CIRCLE_PROJECT_REPONAME -b "$(cat /nerves/deploy/system/RELEASE_NOTES)" -replace $CIRCLE_TAG /nerves/deploy/system/artifacts
+
+workflows:
+  version: 2
+  build_test_deploy:
+    jobs:
+      - build_system:
+          context: org-global
+          filters:
+            tags:
+              only: /.*/
+      - build_test:
+          context: org-global
+          requires:
+            - build_system
+      - deploy_system:
+          context: org-global
+          requires:
+            - build_system
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /v.*/
