@@ -61,6 +61,9 @@ build: &build
             sleep 5
           done
     - run:
+        name: Check formatting
+        command: mix format --check-formatted
+    - run:
         name: Build
         command: mix compile
     - run:
