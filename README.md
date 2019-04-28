@@ -1,5 +1,7 @@
 # CircuitsQuickstart
 
+[![CircleCI](https://circleci.com/gh/elixir-circuits/circuits_quickstart.svg?style=svg)](https://circleci.com/gh/elixir-circuits/circuits_quickstart)
+
 **TODO: Add description**
 
 ## Targets
