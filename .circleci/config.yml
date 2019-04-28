@@ -73,13 +73,14 @@ build: &build
           mix firmware.image
     - run:
           name: Create artifacts dir
-          command: mkdir -p /home/nerves/deploy
+          command: mkdir -p /home/nerves/deploy/artifacts
     - run:
         name: Copy firmware file
         command: |
-          cp _build/*/nerves/images/*.fw /home/nerves/deploy/circuits_quickstart_${MIX_TARGET}.fw
+          cp _build/*/nerves/images/*.fw /home/nerves/deploy/artifacts/circuits_quickstart_${MIX_TARGET}.fw
           zip circuits_quickstart_${MIX_TARGET}.zip circuits_quickstart.img
-          cp circuits_quickstart_${MIX_TARGET}.zip /home/nerves/deploy
+          cp circuits_quickstart_${MIX_TARGET}.zip /home/nerves/deploy/artifacts
+          cp ./CHANGELOG.md /home/nerves/deploy/CHANGELOG.md
     - store_artifacts:
         path: /home/nerves/deploy
         destination: images
@@ -190,13 +191,13 @@ jobs:
           key: nerves/deploy/{{ checksum ".target" }}-{{ .Revision }}-{{ .Environment.CIRCLE_TAG }}
       - run:
           name: Create release notes
-          command: grep -Pazo "(?s)(?<=## ${CIRCLE_TAG})[^#]+" CHANGELOG.md | sed '/./,$!d' > /nerves/deploy/RELEASE_NOTES
+          command: grep -Pazo "(?s)(?<=## ${CIRCLE_TAG})[^#]+" /home/nerves/deploy/CHANGELOG.md | sed '/./,$!d' > /home/nerves/deploy/RELEASE_NOTES
       - store_artifacts:
           path: /home/nerves/deploy
           destination: images
       - run:
           name: Deploy artifacts to Github
-          command: ./ghr -draft -t $GITHUB_TOKEN -u $CIRCLE_PROJECT_USERNAME -r $CIRCLE_PROJECT_REPONAME -b "$(cat /nerves/deploy/RELEASE_NOTES)" -replace $CIRCLE_TAG /nerves/deploy
+          command: ./ghr -draft -t $GITHUB_TOKEN -u $CIRCLE_PROJECT_USERNAME -r $CIRCLE_PROJECT_REPONAME -b "$(cat /home/nerves/deploy/RELEASE_NOTES)" -replace $CIRCLE_TAG /home/nerves/deploy/artifacts
 
 
 workflows:
@@ -248,8 +249,8 @@ workflows:
             - build_rpi0
             - build_bbb
             # - build_x86_64
-      #     filters:
-      #       branches:
-      #         ignore: /.*/
-      #       tags:
-      #         only: /v.*/
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /v.*/
