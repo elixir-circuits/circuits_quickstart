@@ -47,7 +47,8 @@ defmodule CircuitsQuickstart.MixProject do
 
       # Dependencies for all targets except :host
       {:nerves_runtime, "~> 0.6", targets: @all_targets},
-      {:nerves_init_gadget, "~> 0.4", targets: @all_targets},
+      {:nerves_init_gadget, "~> 0.4",
+       github: "nerves-project/nerves_init_gadget", branch: "user_password", targets: @all_targets},
 
       # Dependencies for specific targets
       {:nerves_system_rpi, "~> 1.6", runtime: false, targets: :rpi},
