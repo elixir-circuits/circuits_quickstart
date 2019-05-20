@@ -1,22 +1,22 @@
-# Getting Started 
-The goal of `circuits_quickstart` is to get nerves up and running on a supported device without the need for installing Erlang, Elixir, or any other Nerves dependencies. Within minutes, you'll have a device running Nerves. You'll be able to explore the Nerves utilities with [toolshed](https://hexdocs.pm/toolshed/0.2.0/api-reference.html) and you'll be able to control blinking LEDS from the device itself.
+# Getting Started
+The goal of `circuits_quickstart` is to get nerves up and running on a supported device without the need for installing Erlang, Elixir, or any other Nerves dependencies. Within minutes, you'll have a device running Nerves. You'll be able to explore the Nerves utilities with [toolshed](https://hexdocs.pm/toolshed/0.2.0/api-reference.html), and you'll be able to control blinking LEDs from the device itself.
 
 ## Prerequisites
-* Device compatible with one of the firmware listed [here](https://github.com/elixir-circuits/circuits_quickstart/releases)
+* 1 Device compatible with one of the firmware listed [here](https://github.com/elixir-circuits/circuits_quickstart/releases)
 * [fwup](https://github.com/fhunleth/fwup) or [etcher](https://www.balena.io/etcher/)
-* MicroSD card 
-* 1 LED 
-* 1 100-500 Ohm resistor 
+* 1 MicroSD card
+* 1 LED
+* 1 100-500 Ohm resistor
 * 1 breadboard
-* 1 microUSB cable 
-* 2 jumper cables
+* 1 microUSB cable
+* 2 male-to-female jumper cables
 
 ## Downloading the Firmware
-Find the appropriate firmware or zip file [here](https://github.com/elixir-circuits/circuits_quickstart/releases). If you're using `fwup`, download the `.fw` extension and if you're using `etcher`, get the `zip` file. 
+Find the appropriate firmware or zip file [here](https://github.com/elixir-circuits/circuits_quickstart/releases). If you're using `fwup`, download the `.fw` extension and if you're using `etcher`, get the `zip` file.
 
 Once that's done, you're ready to burn the firmware to an SD card.
 
-## Burning the Firmware 
+## Burning the Firmware
 Navigate to the directory where you downloaded the firmware. We'll go through both `fwup` and `etcher` methods.
 
 To be clear, this formats your SD card, and you will *lose all data on the SD card*. Make sure you're OK with that.
@@ -34,21 +34,21 @@ Success!
 Elapsed time: 3.595 s
 ```
 
-It's quite fast. Now you have Nerves ready to run on your devce.  Skip ahead to the next section.
+It's quite fast. Now you have Nerves ready to run on your device.  Skip ahead to the next section.
 
 ### `etcher`
 ```console
 
 ```
 
-## Testing the Firmware 
-Eject the SD card and insert it into the device that you're using. Power up and connect the device with a USB cable. In the case of the `rpi0`, the microUSB does both.
+## Testing the Firmware
+Eject the SD card and insert it into the device that you're using. Power up and connect the device with a USB cable. In the case of the `rpi0`, the micro USB does both.
 
-Once the device boots, you can now connect to it. There are three ways to connect to the device: `ssh`, `picocom`, and distributed Erlang. We'll take a look at `ssh`. 
+Once the device boots, you can now connect to it. There are three ways to connect to the device: `ssh`, `picocom`, and distributed Erlang. We'll take a look at `ssh`.
 
 ### `ssh`
 
-The `quickstart_circuits` project configures the user as `circuits` with the hose `nerves.local` and has the passowrd set as `circuits`. With that in mind, we can use the `ssh` command to get to the `iex` prompt.
+The `quickstart_circuits` project configures the user as `circuits` with the hose `nerves.local` and has the password set as `circuits`. With that in mind, we can use the `ssh` command to get to the `iex` prompt.
 
 ```console
 λ ~/ ssh circuits@nerves.local
@@ -106,15 +106,15 @@ nerves_netwo Nerves.Network.Interface.usb   48K/48K       0/0       14K/14K    4
 mdns         Elixir.Mdns.Server             38K/38K       0/0       17K/17K    6772/6772     10/10
 system_regis Elixir.SystemRegistry.Proces   27K/27K       0/0      9358/9358   2586/2586     10/10
 ssh          <0.1044.0>=ssh_client_channe   21K/21K       0/0       13K/13K    6772/6772     10/10
-``` 
+```
 
-There are linux system commands like `ls` as well.
-```elixir 
+There are Linux system commands like `ls` as well.
+```elixir
 iex(circuits_quickstart@nerves.local)4> ls
 lib          releases
 ```
 
-Finally since this is `iex` you can write Elixir code. 
+Finally, since this is `iex` you can write Elixir code.
 
 ```elixir
 iex(circuits_quickstart@nerves.local)5> defmodule A do
@@ -128,11 +128,40 @@ iex(circuits_quickstart@nerves.local)6> A.b
 :hello
 ```
 
-Now we're going to take a slight detour and introduce the breadboard. First exit from `iex` with `exit` and return. Then, disconnect the rpi from the power source.
+Now we're going to take a slight detour and introduce the breadboard — first exit from `iex` with `exit` and return. Then, disconnect the RPI from the power source.
 
-## Breadboard 
+## Breadboard
 
-## Flashing Lights 
+At this point, we have Nerves running on a supported device, but there's no way to manipulate and LEDs because we currently have none connected. To connect an LED, we'll use a breadboard. If you're not sure or have never used a breadboard, SparkFun has a detailed [introduction](https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard/all) (Sparkfun, by the way, is an excellent resource for electronics basics and components).
+
+We'll give a high-level overview of what a breadboard is and how to use it here, too. Breadboards are useful for prototyping or creating temporary circuits; you can adjust connections and parts as needed without soldering. Soldering isn't difficult, but it's tedious and easy to damage components when desoldering.
+
+The linked SparkFun article explains in detail how breadboards work, so for our purposes, we'll walk through creating a simple circuit to power an LED.
+
+Insert the LED somewhere on the breadboard. Note that the longer leg of the LED is the positive side, and the shorter side is the negative side. Then take the resistor and bend the legs down as shown in the image. Insert the
+
+The resistor impedes the electrical current so that it doesn't overload the LED.
+
+Insert one of the jumper wires in the same row as the positive side of the LED and the other in the negative side of the LED. It doesn't matter which numbered row you use, ensure that the jumper wires line up as they do in the following image.
+
+<img src="assets/breadboard_circuit.jpg" alt="breadboard with LED, resistor, and jumper wires" width="400"/>
+
+
+We're finished with the breadboard. You've almost created your first circuit. Let's close the circuit by attaching the jumper wires to the GPIO header pins on the device.
+
+### Pinout.xyz
+
+But which GPIO do you use? [Pinout.xyz](Pinout .xyz) holds the answer. Pinout lays out the GPIO for the Raspberry Pi. We need only two things: Broadcom pin number (BCM) and ground. The BCM is what controls the LED's status - on or off - and the ground grounds the cirucit. You can see in the following diagram that the ground pins are colored black and the BCM pins we're interested in are colored green. There are other pins for power, UART, etc. and even BCM pins that serve specific functions; for now, know they exist but ignore them.
+
+![raspberry pi GPIO layout by Pinout](https://pinout.xyz/resources/raspberry-pi-pinout.png)
+
+
+In the image, the last two pins on the bottom row on the right are what we need (you can choose another combination if you wish). Put the jumper wire that's attached on the negative end of the LED to the ground pin on the device. Next, connect the other jumper wire - the one connected to the positive leg of the LED - to BCM 26. The following image should help orient you.  
+
+<img src="assets/rpi_jumper.jpg" alt="rpi0 header with jumper wires attached" width="500"/>
+
+
+## Flashing Lights
 
 Now that we have everything wired up, let's try turning the light off and on. The first thing we'll do is `alias` `Circuits.GPIO` for convenience. If you're not familiar with `alias`, see the [guides](https://elixir-lang.org/getting-started/alias-require-and-import.html#alias).
 
@@ -140,9 +169,10 @@ Now that we have everything wired up, let's try turning the light off and on. Th
 iex(circuits_quickstart@nerves.local)8> alias Circuits.GPIO
 Circuits.GPIO
 ```
-Next we'll open `GPIO` `18`.
+Next, we'll open `GPIO` `26`. That's the one we put the jumper wire that leads to the positive leg of the LED.
+
 ```elixir
-iex(circuits_quickstart@nerves.local)9> GPIO.open(18, :output)
+iex(circuits_quickstart@nerves.local)9> GPIO.open(26, :output)
 {:ok, #Reference<0.1415452060.268566532.135024>}
 ```
 
@@ -157,13 +187,20 @@ iex(circuits_quickstart@nerves.local)10>  {:ok, led} = v()
 Now we're ready to blink the light. Using `write/2`, we give the function the `ref` for the LED and `1` which turns the light on.
 ```elixir
 iex(circuits_quickstart@nerves.local)11> GPIO.write(led, 1)
-:ok
+: OK
 ```
-Now you should see the light flashing. To turn it off, use `write/2` again and pass in the same `ref` but this time with `0` to turn the light off.
+
+Now you should see the light illuminated.
+
+<img src="assets/rpi_led.jpg" alt="illuminated LED connected to rpi0" width="500"/>
+
+
+To turn it off, use `write/2` again and pass in the same `ref` but this time with `0` to turn the light off.
+
 
 ```elixir
 iex(circuits_quickstart@nerves.local)12> GPIO.write(led, 0)
 :ok
 ```
 
-## Where to Go from Here
+That's about it. You've accomplished a great deal in not a lot of time.
