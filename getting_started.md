@@ -44,9 +44,9 @@ It's quite fast. Now you have Nerves ready to run on your device.  Skip ahead to
 
 ### `etcher`
 
-```console
+Start `etcher`, point it to the zip file, and follow the prompts:
 
-```
+![etcher screenshot](assets/etcher.png)
 
 ## Testing the Firmware
 
