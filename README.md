@@ -2,32 +2,52 @@
 
 [![CircleCI](https://circleci.com/gh/elixir-circuits/circuits_quickstart.svg?style=svg)](https://circleci.com/gh/elixir-circuits/circuits_quickstart)
 
-The goal of `circuits_quickstart` is to get nerves up and running on a supported
-device without the need for installing Erlang, Elixir, or any other Nerves
-dependencies. Within minutes, you'll have a device running Nerves. You'll be
-able to explore the Nerves utilities with
-[toolshed](https://hexdocs.pm/toolshed/0.2.0/api-reference.html), and you'll be
-able to control blinking LEDs from the device itself.
+The Elixir Circuits quickstart firmware lets you try out the Elixir Circuits
+projects on real hardware without needing to create a Nerves project, install
+Elixir on Raspbian on a Raspberry Pi or compiling any Elixir code at all.
+Within minutes, you'll have a device running Nerves. You'll be able to explore
+the Nerves environment with [toolshed](https://hexdocs.pm/toolshed/readme.html),
+and you'll be able to blink LEDs from the device itself. You'll also be able to
+explore the other Elixir Circuits libraries and experiment with
+[I2C](https://hex.pm/packages/circuits_i2c),
+[SPI](https://hex.pm/packages/circuits_spi),
+[GPIOs](https://hex.pm/packages/circuits_gpio), and
+[UARTs](https://hex.pm/packages/circuits_uart).
 
 ## Prerequisites
 
-* 1 Device compatible with one of the firmware listed [here](https://github.com/elixir-circuits/circuits_quickstart/releases)
-* [fwup](https://github.com/fhunleth/fwup) or [etcher](https://www.balena.io/etcher/)
+To work through this tutorial, you'll need any Raspberry Pi or BeagleBone
+device. The Circuits Quickstart firmware configures Raspberry Pi Zero, Zero W, 3
+Model A+, and any BeagleBone-compatible device in what's called gadget mode. In
+gadget mode, the device uses a USB cable for power, serial console, and
+networking. We recommend using these devices if they're available. The other
+devices require a HDMI monitor and keyboard or a wired Ethernet connection.
+
+For this tutorial, you'll also need the following:
+
 * 1 MicroSD card
+* [fwup](https://github.com/fhunleth/fwup) or [etcher](https://www.balena.io/etcher/) for burning firmware to the MicroSD card
 * 1 LED
 * 1 100-500 Ohm resistor
 * 1 breadboard
-* 1 microUSB cable
 * 2 male-to-female jumper cables
 
 ## Downloading the Firmware
 
 Find the appropriate firmware or zip file
 [here](https://github.com/elixir-circuits/circuits_quickstart/releases). If
-you're using `fwup`, download the `.fw` extension and if you're using `etcher`,
-get the `zip` file.
+you're using `fwup` to write images to MicroSD cards, download the `.fw`
+extension and if you're using `etcher`, get the `zip` file. Releases are named
+by the boards they support:
 
-Once that's done, you're ready to burn the firmware to an SD card.
+* `bbb` - BeagleBone Black, BeagleBone Green, PocketBeagle, etc.
+* `rpi0` - Raspberry Pi Zero or Zero W
+* `rpi` - The original Raspberry Pi Model B
+* `rpi2` Raspberry Pi 2 Model B
+* `rpi3` - Raspberry Pi 3 Model B and Model B+
+* `rpi3a` - Raspberry Pi 3 Model A+
+
+Once that's done, you're ready to burn the firmware to the MicroSD card.
 
 ## Burning the Firmware
 
@@ -269,3 +289,36 @@ iex(circuits_quickstart@nerves.local)12> GPIO.write(led, 0)
 ```
 
 That's about it. You've accomplished a great deal in not a lot of time.
+
+## Going further
+
+The Quickstart firmware contains all of the Elixir Circuits projects. By
+connecting other hardware to your devices, you can explore more hardware
+interfaces and how they're supported in Elixir. Click on the following links for
+more information:
+
+* [GPIO](https://hex.pm/packages/circuits_gpio)
+* [I2C](https://hex.pm/packages/circuits_i2c)
+* [SPI](https://hex.pm/packages/circuits_spi)
+* [UART](https://hex.pm/packages/circuits_uart)
+
+At some point you'll want to create your own firmware. See the [Nerves
+Installation](https://hexdocs.pm/nerves/installation.html) and [Getting
+Started](https://hexdocs.pm/nerves/getting-started.html) guides for details.
+
+To build the Elixir Circuits Quickstart firmware, make sure that you have run
+through the Nerves installation steps. Then open a terminal window and run the
+following:
+
+```console
+$ git clone https://github.com/elixir-circuits/circuits_quickstart.git
+$ cd circuits_quickstart
+
+# Set the MIX_TARGET to the desired platform (rpi0, bbb, rpi3, etc.)
+$ export MIX_TARGET=rpi0
+$ mix deps.get
+$ mix firmware
+
+# Insert a MicroSD card
+$ mix burn
+```
