@@ -75,7 +75,7 @@ look at `ssh`.
 ### `ssh`
 
 The `quickstart_circuits` project configures the user as `circuits` with the
-hose `nerves.local` and has the password set as `circuits`. With that in mind,
+host `nerves.local` and has the password set as `circuits`. With that in mind,
 we can use the `ssh` command to get to the `iex` prompt.
 
 ```console
