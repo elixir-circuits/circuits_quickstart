@@ -1,7 +1,9 @@
 # Getting Started
+
 The goal of `circuits_quickstart` is to get nerves up and running on a supported device without the need for installing Erlang, Elixir, or any other Nerves dependencies. Within minutes, you'll have a device running Nerves. You'll be able to explore the Nerves utilities with [toolshed](https://hexdocs.pm/toolshed/0.2.0/api-reference.html), and you'll be able to control blinking LEDs from the device itself.
 
 ## Prerequisites
+
 * 1 Device compatible with one of the firmware listed [here](https://github.com/elixir-circuits/circuits_quickstart/releases)
 * [fwup](https://github.com/fhunleth/fwup) or [etcher](https://www.balena.io/etcher/)
 * 1 MicroSD card
@@ -12,20 +14,24 @@ The goal of `circuits_quickstart` is to get nerves up and running on a supported
 * 2 male-to-female jumper cables
 
 ## Downloading the Firmware
+
 Find the appropriate firmware or zip file [here](https://github.com/elixir-circuits/circuits_quickstart/releases). If you're using `fwup`, download the `.fw` extension and if you're using `etcher`, get the `zip` file.
 
 Once that's done, you're ready to burn the firmware to an SD card.
 
 ## Burning the Firmware
+
 Navigate to the directory where you downloaded the firmware. We'll go through both `fwup` and `etcher` methods.
 
 To be clear, this formats your SD card, and you will *lose all data on the SD card*. Make sure you're OK with that.
 
 ### `fwup`
+
 ```console
 λ ~/fwup circuits_quickstart_rpi0.fw
 Use 15.84 GB memory card found at /dev/rdisk2? [y/N] y
 ```
+
 Depending on your OS, you'll likely be asked to authenticate this action. Go ahead and do so.
 
 ```console
@@ -37,11 +43,13 @@ Elapsed time: 3.595 s
 It's quite fast. Now you have Nerves ready to run on your device.  Skip ahead to the next section.
 
 ### `etcher`
+
 ```console
 
 ```
 
 ## Testing the Firmware
+
 Eject the SD card and insert it into the device that you're using. Power up and connect the device with a USB cable. In the case of the `rpi0`, the micro USB does both.
 
 Once the device boots, you can now connect to it. There are three ways to connect to the device: `ssh`, `picocom`, and distributed Erlang. We'll take a look at `ssh`.
@@ -109,6 +117,7 @@ ssh          <0.1044.0>=ssh_client_channe   21K/21K       0/0       13K/13K    6
 ```
 
 There are Linux system commands like `ls` as well.
+
 ```elixir
 iex(circuits_quickstart@nerves.local)4> ls
 lib          releases
@@ -144,22 +153,19 @@ The resistor impedes the electrical current so that it doesn't overload the LED.
 
 Insert one of the jumper wires in the same row as the positive side of the LED and the other in the negative side of the LED. It doesn't matter which numbered row you use, ensure that the jumper wires line up as they do in the following image.
 
-<img src="assets/breadboard_circuit.jpg" alt="breadboard with LED, resistor, and jumper wires" width="400"/>
-
+![breadboard with LED, resistor, and jumper wires](assets/breadboard_circuit.jpg)
 
 We're finished with the breadboard. You've almost created your first circuit. Let's close the circuit by attaching the jumper wires to the GPIO header pins on the device.
 
 ### Pinout.xyz
 
-But which GPIO do you use? [Pinout.xyz](Pinout .xyz) holds the answer. Pinout lays out the GPIO for the Raspberry Pi. We need only two things: Broadcom pin number (BCM) and ground. The BCM is what controls the LED's status - on or off - and the ground grounds the cirucit. You can see in the following diagram that the ground pins are colored black and the BCM pins we're interested in are colored green. There are other pins for power, UART, etc. and even BCM pins that serve specific functions; for now, know they exist but ignore them.
+But which GPIO do you use? [Pinout.xyz](Pinout .xyz) holds the answer. Pinout lays out the GPIO for the Raspberry Pi. We need only two things: Broadcom pin number (BCM) and ground. The BCM is what controls the LED's status - on or off - and the ground grounds the circuit. You can see in the following diagram that the ground pins are colored black and the BCM pins we're interested in are colored green. There are other pins for power, UART, etc. and even BCM pins that serve specific functions; for now, know they exist but ignore them.
 
 ![raspberry pi GPIO layout by Pinout](https://pinout.xyz/resources/raspberry-pi-pinout.png)
 
+In the image, the last two pins on the bottom row on the right are what we need (you can choose another combination if you wish). Put the jumper wire that's attached on the negative end of the LED to the ground pin on the device. Next, connect the other jumper wire - the one connected to the positive leg of the LED - to BCM 26. The following image should help orient you.
 
-In the image, the last two pins on the bottom row on the right are what we need (you can choose another combination if you wish). Put the jumper wire that's attached on the negative end of the LED to the ground pin on the device. Next, connect the other jumper wire - the one connected to the positive leg of the LED - to BCM 26. The following image should help orient you.  
-
-<img src="assets/rpi_jumper.jpg" alt="rpi0 header with jumper wires attached" width="500"/>
-
+![rpi0 header with jumper wires attached](assets/rpi_jumper.jpg)
 
 ## Flashing Lights
 
@@ -169,6 +175,7 @@ Now that we have everything wired up, let's try turning the light off and on. Th
 iex(circuits_quickstart@nerves.local)8> alias Circuits.GPIO
 Circuits.GPIO
 ```
+
 Next, we'll open `GPIO` `26`. That's the one we put the jumper wire that leads to the positive leg of the LED.
 
 ```elixir
@@ -185,6 +192,7 @@ iex(circuits_quickstart@nerves.local)10>  {:ok, led} = v()
 ```
 
 Now we're ready to blink the light. Using `write/2`, we give the function the `ref` for the LED and `1` which turns the light on.
+
 ```elixir
 iex(circuits_quickstart@nerves.local)11> GPIO.write(led, 1)
 : OK
@@ -192,11 +200,9 @@ iex(circuits_quickstart@nerves.local)11> GPIO.write(led, 1)
 
 Now you should see the light illuminated.
 
-<img src="assets/rpi_led.jpg" alt="illuminated LED connected to rpi0" width="500"/>
-
+![illuminated LED connected to rpi0](assets/rpi_led.jpg)
 
 To turn it off, use `write/2` again and pass in the same `ref` but this time with `0` to turn the light off.
-
 
 ```elixir
 iex(circuits_quickstart@nerves.local)12> GPIO.write(led, 0)
