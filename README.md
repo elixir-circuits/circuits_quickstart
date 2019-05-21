@@ -235,8 +235,8 @@ serve specific functions; for now, know they exist but ignore them.
 In the image, the last two pins on the bottom row on the right are what we need
 (you can choose another combination if you wish). Put the jumper wire that's
 attached on the negative end of the LED to the ground pin on the device. Next,
-connect the other jumper wire - the one connected to the positive leg of the LED
-- to BCM 26. The following image should help orient you.
+connect the other jumper wire---the one connected to the positive leg of the LED---to BCM 26. 
+The following image should help orient you.
 
 ![rpi0 header with jumper wires attached](assets/rpi_jumper.jpg)
 
