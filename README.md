@@ -222,7 +222,7 @@ the device.
 
 ### Pinout.xyz
 
-But which GPIO do you use? [Pinout.xyz](Pinout .xyz) holds the answer. Pinout
+But which GPIO do you use? [Pinout.xyz](https://pinout.xyz/) holds the answer. Pinout
 lays out the GPIO for the Raspberry Pi. We need only two things: Broadcom pin
 number (BCM) and ground. The BCM is what controls the LED's status - on or off -
 and the ground grounds the circuit. You can see in the following diagram that
