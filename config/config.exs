@@ -55,13 +55,28 @@ keys =
 # Only enable this for prod if you understand the risks.
 node_name = if Mix.env() != :prod, do: "circuits_quickstart"
 
-config :nerves_init_gadget,
-  ifname: "usb0",
-  address_method: :dhcpd,
-  mdns_domain: "nerves.local",
-  node_name: node_name,
-  node_host: :mdns_domain,
-  ssh_user_passwords: [{"circuits", "circuits"}]
+network_config =
+  case Mix.target() do
+    board when board in [:rpi0, :rpi3a, :bbb] ->
+      [ifname: "usb0", address_method: :dhcpd]
+
+    board when board in [:rpi, :rpi2, :rpi3, :rpi4, :x86_64] ->
+      [ifname: "eth0", address_method: :dhcp]
+
+    :host ->
+      []
+  end
+
+init_gadget_config =
+  network_config ++
+    [
+      mdns_domain: "nerves.local",
+      node_name: node_name,
+      node_host: :mdns_domain,
+      ssh_user_passwords: [{"circuits", "circuits"}]
+    ]
+
+config :nerves_init_gadget, init_gadget_config
 
 # Import target specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
