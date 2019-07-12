@@ -34,10 +34,11 @@ defmodule CircuitsQuickstart.MixProject do
   defp deps do
     [
       # Dependencies for all targets
-      {:nerves, "~> 1.4", runtime: false},
+      {:nerves, "~> 1.5.0", runtime: false},
       {:shoehorn, "~> 0.4"},
       {:ring_logger, "~> 0.6"},
       {:toolshed, "~> 0.2"},
+      {:distillery, "~> 2.1"},
 
       # Circuits projects
       {:circuits_uart, "~> 1.3"},
