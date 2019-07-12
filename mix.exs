@@ -45,6 +45,8 @@ defmodule CircuitsQuickstart.MixProject do
       {:circuits_gpio, "~> 0.4"},
       {:circuits_i2c, "~> 0.3"},
       {:circuits_spi, "~> 0.1"},
+      {:power_control, github: "cjfreeze/power_control"},
+      {:ramoops_logger, "~> 0.1"},
 
       # Dependencies for all targets except :host
       {:nerves_runtime, "~> 0.6", targets: @all_targets},
