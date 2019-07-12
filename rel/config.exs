@@ -27,7 +27,7 @@ end
 
 release :circuits_quickstart do
   set(version: current_version(:circuits_quickstart))
-  set(strip_debug_info: true)
+  # set(strip_debug_info: true)
   plugin(Nerves)
   plugin(Shoehorn)
 end
