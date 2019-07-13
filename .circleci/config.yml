@@ -4,7 +4,7 @@ defaults: &defaults
     - image: nervesproject/nerves_system_br:1.8.2
 
 elixir_version: &elixir_version
-  ELIXIR_VERSION: 1.8.2-otp-22
+  ELIXIR_VERSION: 1.9.0-otp-22
 
 install_elixir: &install_elixir
   run:

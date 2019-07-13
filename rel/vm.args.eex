@@ -5,7 +5,7 @@
 ##  for read only filesystem.
 
 # -name circuits_quickstart@0.0.0.0
--setcookie vau2epvs37xjsnfxjdprlglrikw5b5eiiezb4ezqbca4hiczja27ai5kceiog5iu
+-setcookie <%= @release.options[:cookie] %>
 
 ## Use Ctrl-C to interrupt the current shell rather than invoking the emulator's
 ## break handler and possibly exiting the VM.

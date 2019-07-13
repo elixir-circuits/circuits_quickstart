@@ -2,17 +2,20 @@ defmodule CircuitsQuickstart.MixProject do
   use Mix.Project
 
   @all_targets [:rpi, :rpi0, :rpi2, :rpi3, :rpi3a, :bbb, :x86_64]
+  @app :circuits_quickstart
 
   def project do
     [
-      app: :circuits_quickstart,
-      version: "0.1.0",
-      elixir: "~> 1.8",
-      archives: [nerves_bootstrap: "~> 1.5"],
+      app: @app,
+      version: "0.2.0",
+      elixir: "~> 1.9",
+      archives: [nerves_bootstrap: "~> 1.6"],
       start_permanent: Mix.env() == :prod,
       build_embedded: true,
       aliases: [loadconfig: [&bootstrap/1]],
-      deps: deps()
+      deps: deps(),
+      releases: [{@app, release()}],
+      preferred_cli_target: [run: :host, test: :host]
     ]
   end
 
@@ -23,22 +26,28 @@ defmodule CircuitsQuickstart.MixProject do
     Mix.Task.run("loadconfig", args)
   end
 
-  # Run "mix help compile.app" to learn about applications.
   def application do
     [
       extra_applications: [:logger, :runtime_tools, :inets]
     ]
   end
 
-  # Run "mix help deps" to learn about dependencies.
+  def release do
+    [
+      overwrite: true,
+      cookie: "#{@app}_cookie",
+      include_erts: &Nerves.Release.erts/0,
+      steps: [&Nerves.Release.init/1, :assemble]
+    ]
+  end
+
   defp deps do
     [
       # Dependencies for all targets
       {:nerves, "~> 1.5.0", runtime: false},
-      {:shoehorn, "~> 0.4"},
+      {:shoehorn, "~> 0.6"},
       {:ring_logger, "~> 0.6"},
       {:toolshed, "~> 0.2"},
-      {:distillery, "~> 2.1"},
 
       # Circuits projects
       {:circuits_uart, "~> 1.3"},
