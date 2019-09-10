@@ -46,6 +46,7 @@ by the boards they support:
 * `rpi2` Raspberry Pi 2 Model B
 * `rpi3` - Raspberry Pi 3 Model B and Model B+
 * `rpi3a` - Raspberry Pi 3 Model A+
+* `rpi4` - Raspberry Pi 4 Model B
 
 Once that's done, you're ready to burn the firmware to the MicroSD card.
 
