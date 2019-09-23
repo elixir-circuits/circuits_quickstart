@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.2.1
+
+Updates:
+
+* Update all Nerves Systems (Raspberry Pi's to v1.9.0 and BBB to v2.4.0)
+* Keep symbols so that help is available
+
 ## v0.2.0
 
 Updates:
