@@ -177,11 +177,6 @@ jobs:
       - restore_cache:
           key: nerves/deploy/{{ checksum ".target" }}-{{ .Revision }}-{{ .Environment.CIRCLE_TAG }}
       - run:
-          name: rpi2
-          command: echo "rpi2" > .target
-      - restore_cache:
-          key: nerves/deploy/{{ checksum ".target" }}-{{ .Revision }}-{{ .Environment.CIRCLE_TAG }}
-      - run:
           name: rpi
           command: echo "rpi" > .target
       - restore_cache:
