@@ -16,7 +16,7 @@ config :nerves_runtime, :kernel, use_system_registry: false
 # involved with firmware updates.
 
 config :shoehorn,
-  init: [:nerves_runtime, :nerves_init_gadget],
+  init: [:nerves_runtime, :nerves_pack],
   app: Mix.Project.config()[:app]
 
 # Use Ringlogger as the logger backend and remove :console.
@@ -25,35 +25,53 @@ config :shoehorn,
 
 config :logger, backends: [RingLogger, RamoopsLogger]
 
-# Configure nerves_init_gadget.
-# See https://hexdocs.pm/nerves_init_gadget/readme.html for more information.
+config :nerves_pack,
+  ssh_user_passwords: [{"circuits", "circuits"}]
 
-# Setting the node_name will enable Erlang Distribution.
-# Only enable this for prod if you understand the risks.
-node_name = if Mix.env() != :prod, do: "circuits_quickstart"
+# Configure the network using vintage_net
+# See https://github.com/nerves-networking/vintage_net for more information
+config :vintage_net,
+  regulatory_domain: "US",
+  config: [
+    {"usb0", %{type: VintageNetDirect}},
+    {"eth0",
+     %{
+       type: VintageNetEthernet,
+       ipv4: %{method: :dhcp}
+     }}
+  ]
 
-network_config =
-  case Mix.target() do
-    board when board in [:rpi0, :rpi3a, :bbb] ->
-      [ifname: "usb0", address_method: :dhcpd]
+config :mdns_lite,
+  # The `host` key specifies what hostnames mdns_lite advertises.  `:hostname`
+  # advertises the device's hostname.local. For the official Nerves systems, this
+  # is "nerves-<4 digit serial#>.local".  mdns_lite also advertises
+  # "nerves.local" for convenience. If more than one Nerves device is on the
+  # network, delete "nerves" from the list.
 
-    board when board in [:rpi, :rpi2, :rpi3, :rpi4, :x86_64] ->
-      [ifname: "eth0", address_method: :dhcp]
+  host: ["nerves", "circuits_quickstart"],
+  ttl: 120,
 
-    :host ->
-      []
-  end
-
-init_gadget_config =
-  network_config ++
-    [
-      mdns_domain: "nerves.local",
-      node_name: node_name,
-      node_host: :mdns_domain,
-      ssh_user_passwords: [{"circuits", "circuits"}]
-    ]
-
-config :nerves_init_gadget, init_gadget_config
+  # Advertise the following services over mDNS.
+  services: [
+    %{
+      name: "SSH Remote Login Protocol",
+      protocol: "ssh",
+      transport: "tcp",
+      port: 22
+    },
+    %{
+      name: "Secure File Transfer Protocol over SSH",
+      protocol: "sftp-ssh",
+      transport: "tcp",
+      port: 22
+    },
+    %{
+      name: "Erlang Port Mapper Daemon",
+      protocol: "epmd",
+      transport: "tcp",
+      port: 4369
+    }
+  ]
 
 # Import target specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
