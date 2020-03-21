@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.3.0
+
+Updates:
+
+* Update to Nerves 1.6 and VintageNet/NervesPack
+
 ## v0.2.1
 
 Updates:
