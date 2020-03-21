@@ -1,15 +1,16 @@
 defmodule CircuitsQuickstart.MixProject do
   use Mix.Project
 
-  @all_targets [:rpi, :rpi0, :rpi2, :rpi3, :rpi3a, :rpi4, :bbb, :x86_64]
   @app :circuits_quickstart
+  @version "0.2.1"
+  @all_targets [:rpi, :rpi0, :rpi2, :rpi3, :rpi3a, :rpi4, :bbb, :x86_64]
 
   def project do
     [
       app: @app,
-      version: "0.2.1",
+      version: @version,
       elixir: "~> 1.9",
-      archives: [nerves_bootstrap: "~> 1.6"],
+      archives: [nerves_bootstrap: "~> 1.8"],
       start_permanent: Mix.env() == :prod,
       build_embedded: true,
       aliases: [loadconfig: [&bootstrap/1]],
@@ -32,20 +33,10 @@ defmodule CircuitsQuickstart.MixProject do
     ]
   end
 
-  def release do
-    [
-      overwrite: true,
-      cookie: "#{@app}_cookie",
-      include_erts: &Nerves.Release.erts/0,
-      steps: [&Nerves.Release.init/1, :assemble],
-      strip_beams: Mix.env() == :prod
-    ]
-  end
-
   defp deps do
     [
       # Dependencies for all targets
-      {:nerves, "~> 1.5.0", runtime: false},
+      {:nerves, "~> 1.6.0", runtime: false},
       {:shoehorn, "~> 0.6"},
       {:ring_logger, "~> 0.6"},
       {:toolshed, "~> 0.2"},
@@ -64,14 +55,24 @@ defmodule CircuitsQuickstart.MixProject do
        github: "nerves-project/nerves_pack", branch: "user_password", targets: @all_targets},
 
       # Dependencies for specific targets
-      {:nerves_system_rpi, "~> 1.8", runtime: false, targets: :rpi},
-      {:nerves_system_rpi0, "~> 1.8", runtime: false, targets: :rpi0},
-      {:nerves_system_rpi2, "~> 1.8", runtime: false, targets: :rpi2},
-      {:nerves_system_rpi3, "~> 1.8", runtime: false, targets: :rpi3},
-      {:nerves_system_rpi3a, "~> 1.8", runtime: false, targets: :rpi3a},
-      {:nerves_system_rpi4, "~> 1.8", runtime: false, targets: :rpi4},
-      {:nerves_system_bbb, "~> 2.3", runtime: false, targets: :bbb},
-      {:nerves_system_x86_64, "~> 1.8", runtime: false, targets: :x86_64}
+      {:nerves_system_rpi, "~> 1.11", runtime: false, targets: :rpi},
+      {:nerves_system_rpi0, "~> 1.11", runtime: false, targets: :rpi0},
+      {:nerves_system_rpi2, "~> 1.11", runtime: false, targets: :rpi2},
+      {:nerves_system_rpi3, "~> 1.11", runtime: false, targets: :rpi3},
+      {:nerves_system_rpi3a, "~> 1.11", runtime: false, targets: :rpi3a},
+      {:nerves_system_rpi4, "~> 1.11", runtime: false, targets: :rpi4},
+      {:nerves_system_bbb, "~> 2.6", runtime: false, targets: :bbb},
+      {:nerves_system_x86_64, "~> 1.11", runtime: false, targets: :x86_64}
+    ]
+  end
+
+  def release do
+    [
+      overwrite: true,
+      cookie: "#{@app}_cookie",
+      include_erts: &Nerves.Release.erts/0,
+      steps: [&Nerves.Release.init/1, :assemble],
+      strip_beams: Mix.env() == :prod
     ]
   end
 end
