@@ -104,7 +104,7 @@ we can use the `ssh` command to get to the `iex` prompt.
 SSH server
 Enter password for "circuits"
 password:
-Interactive Elixir (1.8.1) - press Ctrl+C to exit (type h() ENTER for help)
+Interactive Elixir (1.10.3) - press Ctrl+C to exit (type h() ENTER for help)
 Toolshed imported. Run h(Toolshed) for more info
 
                 ;kX'
@@ -189,7 +189,7 @@ source.
 ## Breadboard
 
 At this point, we have Nerves running on a supported device, but there's no way
-to manipulate and LEDs because we currently have none connected. To connect an
+to manipulate any LEDs because we currently have none connected. To connect an
 LED, we'll use a breadboard. If you're not sure or have never used a breadboard,
 SparkFun has a detailed
 [introduction](https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard/all)
