@@ -54,7 +54,6 @@ defmodule CircuitsQuickstart.MixProject do
       {:nerves_pack, "~> 0.3",
        github: "nerves-project/nerves_pack", branch: "user_password", targets: @all_targets},
 
-
       # Dependencies for specific targets
       {:nerves_system_rpi, "~> 1.12", runtime: false, targets: :rpi},
       {:nerves_system_rpi0, "~> 1.12", runtime: false, targets: :rpi0},
