@@ -29,7 +29,7 @@ config :nerves,
 # * See https://hexdocs.pm/ssh_subsystem_fwup/readme.html for firmware updates
 
 config :nerves_ssh,
-  user_passwords: [{"circuits", "circuits"}]
+  user_passwords: [{"circuits", "circuits"}, {"root", "circuits"}]
 
 # Configure the network using vintage_net
 # See https://github.com/nerves-networking/vintage_net for more information
