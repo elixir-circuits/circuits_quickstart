@@ -47,6 +47,7 @@ by the boards they support:
 * `rpi3` - Raspberry Pi 3 Model B and Model B+
 * `rpi3a` - Raspberry Pi 3 Model A+
 * `rpi4` - Raspberry Pi 4 Model B
+* `osd32mp1` - Octavo OSD32MP1-BRK
 
 Once that's done, you're ready to burn the firmware to the MicroSD card.
 

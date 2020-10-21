@@ -14,8 +14,22 @@ config :shoehorn,
 
 config :nerves_runtime, :kernel, use_system_registry: false
 
-config :nerves_pack,
-  ssh_user_passwords: [{"circuits", "circuits"}]
+# Erlinit can be configured without a rootfs_overlay. See
+# https://github.com/nerves-project/erlinit/ for more information on
+# configuring erlinit.
+
+config :nerves,
+  erlinit: [
+    hostname_pattern: "nerves-%s"
+  ]
+
+# Configure the device for SSH IEx prompt access and firmware updates
+#
+# * See https://hexdocs.pm/nerves_ssh/readme.html for general SSH configuration
+# * See https://hexdocs.pm/ssh_subsystem_fwup/readme.html for firmware updates
+
+config :nerves_ssh,
+  user_passwords: [{"circuits", "circuits"}]
 
 # Configure the network using vintage_net
 # See https://github.com/nerves-networking/vintage_net for more information

@@ -1,10 +1,10 @@
 defaults: &defaults
   working_directory: /nerves/build
   docker:
-    - image: nervesproject/nerves_system_br:1.11.0
+    - image: nervesproject/nerves_system_br:1.13.2
 
 elixir_version: &elixir_version
-  ELIXIR_VERSION: 1.10.2-otp-22
+  ELIXIR_VERSION: 1.11.1-otp-23
 
 install_elixir: &install_elixir
   run:
@@ -92,6 +92,13 @@ build: &build
 version: 2.0
 
 jobs:
+  build_osd32mp1:
+    <<: *defaults
+    environment:
+      <<: *elixir_version
+      MIX_TARGET: osd32mp1
+    <<: *build
+
   build_rpi4:
     <<: *defaults
     environment:
@@ -157,6 +164,11 @@ jobs:
           name: Create Artifacts Dir
           command: mkdir -p /home/nerves/deploy
       - run:
+          name: osd32mp1
+          command: echo "osd32mp1" > .target
+      - restore_cache:
+          key: nerves/deploy/{{ checksum ".target" }}-{{ .Revision }}-{{ .Environment.CIRCLE_TAG }}
+      - run:
           name: rpi4
           command: echo "rpi4" > .target
       - restore_cache:
@@ -211,6 +223,11 @@ workflows:
   version: 2
   build_deploy:
     jobs:
+      - build_osd32mp1:
+          context: org-global
+          filters:
+            tags:
+              only: /.*/
       - build_rpi4:
           context: org-global
           filters:
@@ -254,6 +271,7 @@ workflows:
       - deploy:
           context: org-global
           requires:
+            - build_osd32mp1
             - build_rpi4
             - build_rpi3a
             - build_rpi3
