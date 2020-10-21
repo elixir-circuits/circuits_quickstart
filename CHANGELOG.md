@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.4.0
+
+Updates:
+
+* Add support for the OSD32MP1
+* Update to use `nerves_ssh` and properly support username/password access to
+  the device
+* Build with Elixir 1.11.1
+* Update Nerves systems to latest (`nerves_system_br v1.13.2`-based)
+
 ## v0.3.0
 
 Updates:
