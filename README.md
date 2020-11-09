@@ -102,11 +102,15 @@ we can use the `ssh` command to get to the `iex` prompt.
 
 ```console
 λ ~/ ssh circuits@nerves.local
-SSH server
-Enter password for "circuits"
-password:
-Interactive Elixir (1.10.3) - press Ctrl+C to exit (type h() ENTER for help)
-Toolshed imported. Run h(Toolshed) for more info
+Warning: Permanently added 'nerves.local,172.31.112.97' (RSA) to the list of known hosts.
+Elixir Circuits Quickstart
+https://github.com/elixir-circuits/circuits_quickstart
+
+ssh circuits@nerves.local # Use password "circuits"
+
+Password:
+Interactive Elixir (1.11.2) - press Ctrl+C to exit (type h() ENTER for help)
+Toolshed imported. Run h(Toolshed) for more info.
 
                 ;kX'
               ,0XXXl

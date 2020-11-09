@@ -29,7 +29,13 @@ config :nerves,
 # * See https://hexdocs.pm/ssh_subsystem_fwup/readme.html for firmware updates
 
 config :nerves_ssh,
-  user_passwords: [{"circuits", "circuits"}, {"root", "circuits"}]
+  user_passwords: [{"circuits", "circuits"}, {"root", "circuits"}],
+  daemon_option_overrides: [
+    {:auth_method_kb_interactive_data,
+     {'Elixir Circuits Quickstart',
+      'https://github.com/elixir-circuits/circuits_quickstart\n\nssh circuits@nerves.local # Use password "circuits"\n',
+      'Password: ', false}}
+  ]
 
 # Configure the network using vintage_net
 # See https://github.com/nerves-networking/vintage_net for more information
