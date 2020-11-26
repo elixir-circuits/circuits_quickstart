@@ -64,7 +64,7 @@ defmodule CircuitsQuickstart.MixProject do
       cookie: "#{@app}_cookie",
       include_erts: &Nerves.Release.erts/0,
       steps: [&Nerves.Release.init/1, :assemble],
-      strip_beams: Mix.env() == :prod
+      strip_beams: [keep: ["Docs"]]
     ]
   end
 end
