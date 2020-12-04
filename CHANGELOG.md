@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.4.1
+
+Updates:
+
+* Update Nerves systems to latest (`nerves_system_br v1.13.5`-based)
+* Raspberry Pi 4 now runs in 64-bit mode
+* Path autocompletion at IEx prompt
+
 ## v0.4.0
 
 Updates:
