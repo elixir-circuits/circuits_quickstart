@@ -9,7 +9,7 @@ defmodule CircuitsQuickstart.MixProject do
     [
       app: @app,
       version: @version,
-      elixir: "~> 1.10",
+      elixir: "~> 1.11",
       archives: [nerves_bootstrap: "~> 1.9"],
       start_permanent: Mix.env() == :prod,
       build_embedded: true,
