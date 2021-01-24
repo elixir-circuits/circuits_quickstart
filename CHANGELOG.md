@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.4.2
+
+WiFi configuration is easier now! To scan for networks, run
+`VintageNetWiFi.quick_scan` and then to connect, run
+`VintageNetWiFi.quick_configure("ssid", "password")`.
+
+Updates:
+
+* Update Nerves systems to the latest (`nerves_system_br v1.13.7`-based)
+* Update `circuits_i2c` so that it includes the new `discover_*` helper
+  functions
+* Update `vintage_net_wifi` to pull in the "quick" helper functions
+
 ## v0.4.1
 
 Updates:
