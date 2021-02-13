@@ -150,6 +150,20 @@ jobs:
       MIX_TARGET: bbb
     <<: *build
 
+  build_npi_imx6ull:
+    <<: *defaults
+    environment:
+      <<: *elixir_version
+      MIX_TARGET: npi_imx6ull
+    <<: *build
+
+  build_giant_board:
+    <<: *defaults
+    environment:
+      <<: *elixir_version
+      MIX_TARGET: giant_board
+    <<: *build
+
   build_x86_64:
     <<: *defaults
     environment:
@@ -203,6 +217,16 @@ jobs:
       - run:
           name: bbb
           command: echo "bbb" > .target
+      - restore_cache:
+          key: nerves/deploy/{{ checksum ".target" }}-{{ .Revision }}-{{ .Environment.CIRCLE_TAG }}
+      - run:
+          name: npi_imx6ull
+          command: echo "npi_imx6ull" > .target
+      - restore_cache:
+          key: nerves/deploy/{{ checksum ".target" }}-{{ .Revision }}-{{ .Environment.CIRCLE_TAG }}
+      - run:
+          name: giant_board
+          command: echo "giant_board" > .target
       - restore_cache:
           key: nerves/deploy/{{ checksum ".target" }}-{{ .Revision }}-{{ .Environment.CIRCLE_TAG }}
       - run:
@@ -265,6 +289,16 @@ workflows:
           filters:
             tags:
               only: /.*/
+      - build_npi_imx6ull:
+          context: org-global
+          filters:
+            tags:
+              only: /.*/
+      - build_giant_board:
+          context: org-global
+          filters:
+            tags:
+              only: /.*/
       # - build_x86_64:
       #     context: org-global
       #     filters:
@@ -281,6 +315,8 @@ workflows:
             - build_rpi
             - build_rpi0
             - build_bbb
+            - build_npi_imx6ull
+            - build_giant_board
             # - build_x86_64
           filters:
             branches:
