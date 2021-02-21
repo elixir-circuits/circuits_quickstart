@@ -37,20 +37,6 @@ config :nerves_ssh,
       'Password: ', false}}
   ]
 
-# Configure the network using vintage_net
-# See https://github.com/nerves-networking/vintage_net for more information
-config :vintage_net,
-  regulatory_domain: "US",
-  config: [
-    {"usb0", %{type: VintageNetDirect}},
-    {"eth0",
-     %{
-       type: VintageNetEthernet,
-       ipv4: %{method: :dhcp}
-     }},
-    {"wlan0", %{type: VintageNetWiFi}}
-  ]
-
 config :mdns_lite,
   # The `host` key specifies what hostnames mdns_lite advertises.  `:hostname`
   # advertises the device's hostname.local. For the official Nerves systems, this
@@ -85,6 +71,5 @@ config :mdns_lite,
 
 # Import target specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-# Uncomment to use target specific configurations
 
-# import_config "#{Mix.target()}.exs"
+import_config "#{Mix.target()}.exs"
