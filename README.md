@@ -206,21 +206,23 @@ components).
 We'll give a high-level overview of what a breadboard is and how to use it here,
 too. Breadboards are useful for prototyping or creating temporary circuits; you
 can adjust connections and parts as needed without soldering. Soldering isn't
-difficult, but it's tedious and easy to damage components when desoldering.
+difficult and it's useful when you're ready to make more permanent versions of
+your circuits.
 
 The linked SparkFun article explains in detail how breadboards work, so for our
 purposes, we'll walk through creating a simple circuit to power an LED.
 
 Insert the LED somewhere on the breadboard. Note that the longer leg of the LED
 is the positive side, and the shorter side is the negative side. Then take the
-resistor and bend the legs down as shown in the image. Insert the
+resistor and bend the legs down as shown in the image. Insert one leg of the
+resistor in the same row as the positive side of the LED and the other leg in an
+unused row.
 
 The resistor impedes the electrical current so that it doesn't overload the LED.
 
-Insert one of the jumper wires in the same row as the positive side of the LED
-and the other in the negative side of the LED. It doesn't matter which numbered
-row you use, ensure that the jumper wires line up as they do in the following
-image.
+Insert one of the jumper wires in the same row as the resistor and the other in
+the row with the negative leg of the LED. The result should look like the
+following image.
 
 ![breadboard with LED, resistor, and jumper wires](assets/breadboard_circuit.jpg)
 
