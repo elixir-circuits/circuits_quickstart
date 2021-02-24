@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.4.3
+
+Updates
+
+* Add support for the Seeed Studio NPi IMX6ULL and Giant Board
+* Update to `nerves_system_br v1.14.4` systems
+
 ## v0.4.2
 
 WiFi configuration is easier now! To scan for networks, run
