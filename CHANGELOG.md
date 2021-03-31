@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.4.4
+
+Updates:
+
+* Update to `nerves_system_br v1.15.0` systems (Erlang/OTP 23.2.7)
+* Remove Giant Board support since it doesn't support nerves_system_br v1.15.0
+
 ## v0.4.3
 
 Updates
