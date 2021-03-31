@@ -49,7 +49,6 @@ by the boards they support:
 * `rpi4` - Raspberry Pi 4 Model B
 * `osd32mp1` - Octavo OSD32MP1-BRK
 * `npi_imx6ull` - Seeed Studio imx6ull (select MicroSD boot mode)
-* `giant_board` - Groboards Giant Board (ATSAMA5D27)
 
 Once that's done, you're ready to burn the firmware to the MicroSD card.
 
