@@ -20,7 +20,7 @@ defmodule CircuitsQuickstart.MixProject do
     [
       app: @app,
       version: @version,
-      elixir: "~> 1.11",
+      elixir: "~> 1.12",
       archives: [nerves_bootstrap: "~> 1.9"],
       start_permanent: Mix.env() == :prod,
       build_embedded: true,
@@ -39,7 +39,7 @@ defmodule CircuitsQuickstart.MixProject do
   defp deps do
     [
       # Dependencies for all targets
-      {:nerves, "~> 1.7.4", runtime: false},
+      {:nerves, "~> 1.7.7", runtime: false},
       {:shoehorn, "~> 0.7.0"},
       {:ring_logger, "~> 0.8.1"},
       {:toolshed, "~> 0.2.13"},
