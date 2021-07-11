@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.4.5
+
+Updates:
+
+* Update to `nerves_system_br v1.16.1` systems (Erlang/OTP 24.0.3)
+
 ## v0.4.4
 
 Updates:
