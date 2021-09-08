@@ -1,8 +1,5 @@
-# Add Toolshed helpers to the IEx session
-use Toolshed
-
-if RingLogger in Application.get_env(:logger, :backends, []) do
-  IO.puts([
+NervesMOTD.print(
+  logo: [
     IO.ANSI.color(5),
     """
 
@@ -32,10 +29,9 @@ if RingLogger in Application.get_env(:logger, :backends, []) do
     image. See https://github.com/elixir-circuits/circuits_quickstart for
     more details.
 
-    View log messages with `RingLogger.next` or `RingLogger.attach`. Toolshed
-    helpers are available. Type `h Toolshed` for details.
-
-    If connecting via ssh, type `exit` or `<enter>~.` to disconnect.
     """
-  ])
-end
+  ]
+)
+
+# Add Toolshed helpers to the IEx session
+use Toolshed
