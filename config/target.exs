@@ -47,19 +47,16 @@ config :mdns_lite,
   # Advertise the following services over mDNS.
   services: [
     %{
-      name: "SSH Remote Login Protocol",
       protocol: "ssh",
       transport: "tcp",
       port: 22
     },
     %{
-      name: "Secure File Transfer Protocol over SSH",
       protocol: "sftp-ssh",
       transport: "tcp",
       port: 22
     },
     %{
-      name: "Erlang Port Mapper Daemon",
       protocol: "epmd",
       transport: "tcp",
       port: 4369
