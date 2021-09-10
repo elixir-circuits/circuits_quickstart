@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.4.6
+
+Updates:
+
+* Add new Nerves MOTD
+* Update all dependencies to latest
+
 ## v0.4.5
 
 Updates:
