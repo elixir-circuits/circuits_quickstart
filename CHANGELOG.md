@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.4.7
+
+Updates:
+
+* Update to `nerves_system_br v1.16.3`-based systems (Erlang/OTP 24.1.4)
+* Support USB gadget networking on Raspberry Pi 4
+* Support the Raspberry Pi Zero 2 W (use the `rpi3a` version)
+
 ## v0.4.6
 
 Updates:
