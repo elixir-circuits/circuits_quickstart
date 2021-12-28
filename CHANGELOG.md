@@ -1,10 +1,18 @@
 # Changelog
 
+## v0.4.8 - 2021-12-28
+
+Updates:
+
+* Update to `nerves_system_br v1.17.4`-based systems (Erlang/OTP 24.1.7)
+* Update to Elixir 1.13
+* Update other dependencies to latest
+
 ## v0.4.7
 
 Updates:
 
-* Update to `nerves_system_br v1.16.3`-based systems (Erlang/OTP 24.1.4)
+* Update to `nerves_system_br v1.17.3`-based systems (Erlang/OTP 24.1.4)
 * Support USB gadget networking on Raspberry Pi 4
 * Support the Raspberry Pi Zero 2 W (use the `rpi3a` version)
 
