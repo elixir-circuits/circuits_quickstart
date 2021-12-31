@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.4.9 - 2021-12-31
+
+Updates:
+
+* Update to `nerves_system_br v1.18.2`-based systems (Erlang/OTP 24.2)
+
 ## v0.4.8 - 2021-12-28
 
 Updates:
