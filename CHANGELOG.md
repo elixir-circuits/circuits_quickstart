@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.4.10 - 2022-01-16
+
+Updates:
+
+* Simplify the ssh login to ignore the user. The login is not secure anyway and
+  this skips the step of fixing the user when you forget to specify it.
+* Update to `nerves_system_br v1.18.3`-based systems. This fixes a `cpufreq`
+  regression on Raspberry Pi.
+
 ## v0.4.9 - 2021-12-31
 
 Updates:
