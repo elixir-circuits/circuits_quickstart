@@ -48,7 +48,7 @@ defmodule CircuitsQuickstart.MixProject do
       {:circuits_uart, "~> 1.3"},
       {:circuits_gpio, "~> 1.0"},
       {:circuits_i2c, "~> 1.0"},
-      {:circuits_spi, "~> 1.0"},
+      {:circuits_spi, "~> 1.2"},
       {:power_control, github: "cjfreeze/power_control"},
       {:ramoops_logger, "~> 0.1"},
 
