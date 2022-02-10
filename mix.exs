@@ -32,7 +32,7 @@ defmodule CircuitsQuickstart.MixProject do
 
   def application do
     [
-      extra_applications: [:logger, :runtime_tools, :inets]
+      extra_applications: [:logger, :runtime_tools, :inets, :ssl]
     ]
   end
 
