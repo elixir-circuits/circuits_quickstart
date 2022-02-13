@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.4.11 - 2022-02-13
+
+Updates:
+
+* Update to `nerves_system_br v1.18.4`-based systems (Erlang/OTP 24.2.1)
+* Update `circuits_spi` to support devices that need the least significant bit
+  first
+
 ## v0.4.10 - 2022-01-16
 
 Updates:
