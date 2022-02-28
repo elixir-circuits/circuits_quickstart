@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.4.12 - 2022-02-28
+
+Updates:
+
+* Add experimental support for the GRiSP 2. See README for installation.
+
 ## v0.4.11 - 2022-02-13
 
 Updates:
