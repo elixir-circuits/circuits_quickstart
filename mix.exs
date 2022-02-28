@@ -13,7 +13,8 @@ defmodule CircuitsQuickstart.MixProject do
     :bbb,
     :osd32mp1,
     :x86_64,
-    :npi_imx6ull
+    :npi_imx6ull,
+    :grisp2
   ]
 
   def project do
@@ -66,7 +67,8 @@ defmodule CircuitsQuickstart.MixProject do
       {:nerves_system_bbb, "~> 2.11", runtime: false, targets: :bbb},
       {:nerves_system_osd32mp1, "~> 0.7", runtime: false, targets: :osd32mp1},
       {:nerves_system_x86_64, "~> 1.16", runtime: false, targets: :x86_64},
-      {:nerves_system_npi_imx6ull, "~> 0.6", runtime: false, targets: :npi_imx6ull}
+      {:nerves_system_npi_imx6ull, "~> 0.6", runtime: false, targets: :npi_imx6ull},
+      {:nerves_system_grisp2, "~> 0.2", runtime: false, targets: :grisp2}
     ]
   end
 

@@ -91,6 +91,53 @@ build: &build
         paths:
           - /home/nerves/deploy
 
+build_grisp2: &build_grisp2
+  steps:
+    - checkout
+    - <<: *install_system_deps
+    - <<: *install_elixir
+    - <<: *install_hex_rebar
+    - <<: *install_nerves_bootstrap
+    - run: echo "$MIX_TARGET" > .target
+    - run:
+        name: Fetch Deps
+        command: |
+          n=0
+          until [ $n -ge 5 ]; do
+            mix deps.get && break
+            n=$((n+1))
+            echo "Error while fetching deps. Retrying in 5 seconds"
+            sleep 5
+          done
+    - run:
+        name: Check formatting
+        command: mix format --check-formatted
+    - run:
+        name: Build
+        command: mix compile
+    - run:
+        name: Create firmware
+        command: |
+          mix firmware
+          mix firmware.image
+    - run:
+          name: Create artifacts dir
+          command: mkdir -p /home/nerves/deploy/artifacts
+    - run:
+        name: Copy firmware file
+        command: |
+          cp _build/*/nerves/images/*.fw /home/nerves/deploy/artifacts/circuits_quickstart_${MIX_TARGET}.fw
+          gzip -k circuits_quickstart.img
+          cp circuits_quickstart.img.gz /home/nerves/deploy/artifacts/circuits_quickstart_${MIX_TARGET}.img.gz
+          cp ./CHANGELOG.md /home/nerves/deploy/CHANGELOG.md
+    - store_artifacts:
+        path: /home/nerves/deploy
+        destination: images
+    - save_cache:
+        key: nerves/deploy/{{ checksum ".target" }}-{{ .Revision }}-{{ .Environment.CIRCLE_TAG }}
+        paths:
+          - /home/nerves/deploy
+
 version: 2.0
 
 jobs:
@@ -157,6 +204,13 @@ jobs:
       MIX_TARGET: npi_imx6ull
     <<: *build
 
+  build_grisp2:
+    <<: *defaults
+    environment:
+      <<: *elixir_version
+      MIX_TARGET: grisp2
+    <<: *build_grisp2
+
   build_x86_64:
     <<: *defaults
     environment:
@@ -215,6 +269,11 @@ jobs:
       - run:
           name: npi_imx6ull
           command: echo "npi_imx6ull" > .target
+      - restore_cache:
+          key: nerves/deploy/{{ checksum ".target" }}-{{ .Revision }}-{{ .Environment.CIRCLE_TAG }}
+      - run:
+          name: grisp2
+          command: echo "grisp2" > .target
       - restore_cache:
           key: nerves/deploy/{{ checksum ".target" }}-{{ .Revision }}-{{ .Environment.CIRCLE_TAG }}
       - run:
@@ -282,6 +341,11 @@ workflows:
           filters:
             tags:
               only: /.*/
+      - build_grisp2:
+          context: org-global
+          filters:
+            tags:
+              only: /.*/
       # - build_x86_64:
       #     context: org-global
       #     filters:
@@ -299,6 +363,7 @@ workflows:
             - build_rpi0
             - build_bbb
             - build_npi_imx6ull
+            - build_grisp2
             # - build_x86_64
           filters:
             branches:
