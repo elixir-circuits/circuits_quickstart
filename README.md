@@ -41,7 +41,7 @@ extension and if you're using `etcher`, get the `zip` file. Releases are named
 by the boards they support:
 
 * `bbb` - BeagleBone Black, BeagleBone Green, PocketBeagle, etc.
-* `grisp2` - GRiSP2 (Experimental)
+* `grisp2` - [GRiSP2](https://www.grisp.org/) (Experimental)
 * `rpi0` - Raspberry Pi Zero or Zero W
 * `rpi` - The original Raspberry Pi Model B
 * `rpi2` Raspberry Pi 2 Model B
@@ -49,9 +49,12 @@ by the boards they support:
 * `rpi3a` - Raspberry Pi 3 Model A+ and Raspberry Pi Zero 2 W
 * `rpi4` - Raspberry Pi 4 Model B
 * `osd32mp1` - Octavo OSD32MP1-BRK
-* `npi_imx6ull` - Seeed Studio imx6ull (select MicroSD boot mode)
+* `npi_imx6ull` - Seeed Studio imx6ull (select the MicroSD boot mode switches)
 
-Once the download completes, you're ready to install the firmware on your device.
+Some of these are easier than others to use. If you have a choice, the Raspberry
+Pi Zero, Raspberry Pi 4 and BeagleBones are good ones to try first. These boards
+have a lot of functionality and connecting them to a network is a little easier
+than the others.
 
 ## Burning the Firmware for devices that boot from MicroSD
 
@@ -59,13 +62,17 @@ These instructions will work for the Raspberry Pi, Beaglebones and other devices
 that either boot off MicroSD cards or can be configured to do so. If you're
 using a GRiSP 2, see the GRiSP 2 installation section.
 
-Navigate to the directory where you downloaded the firmware. We'll go through
-both `fwup` and `etcher` methods.
+Navigate to the directory where you downloaded the firmware. Either `fwup` or
+`etcher` can be used to burn the firmware.
 
 To be clear, this formats your SD card, and you will *lose all data on the SD
 card*. Make sure you're OK with that.
 
 ### `fwup`
+
+You'll need to install `fwup` if you don't have it. On Mac, run `brew install
+fwup`. For Linux and Windows, see the [fwup installation
+instructions](https://github.com/fwup-home/fwup#installing).
 
 ```console
 λ ~/fwup circuits_quickstart_rpi0.fw
@@ -86,7 +93,8 @@ the next section.
 
 ### `etcher`
 
-Start `etcher`, point it to the zip file, and follow the prompts:
+Start [`etcher`](https://www.balena.io/etcher/), point it to the zip file, and
+follow the prompts:
 
 ![etcher screenshot](assets/etcher.png)
 
