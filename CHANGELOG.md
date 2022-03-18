@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.4.14 - 2022-03-18
+
+Updates:
+
+* Update to `nerves_system_br v1.18.6`-based systems (Erlang/OTP 24.3.2)
+* Update other dependencies (various improvements for BBB, GRiSP 2, and boot
+  time performance)
+
 ## v0.4.13 - 2022-03-03
 
 Updates:
