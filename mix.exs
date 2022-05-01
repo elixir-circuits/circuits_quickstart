@@ -33,6 +33,7 @@ defmodule CircuitsQuickstart.MixProject do
 
   def application do
     [
+      mod: {CircuitsQuickstart.Application, []},
       extra_applications: [:logger, :runtime_tools, :inets, :ssl]
     ]
   end

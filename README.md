@@ -88,6 +88,19 @@ Success!
 Elapsed time: 3.595 s
 ```
 
+If you're using a WiFi-enabled device and want the WiFi credentials to be
+written to the MicroSD card, initialize the MicroSD card like this instead:
+
+```sh
+export NERVES_WIFI_SSID='access_point'
+export NERVES_WIFI_PASSPHRASE='passphrase'
+fwup circuits_quickstart_rpi0.fw
+```
+
+You can still change the WiFi credentials at runtime using
+`VintageNetWiFi.quick_configure/2`, but this helps you don't have an easy
+alternative way of accessing the device to configure WiFi.
+
 It's quite fast. Now you have Nerves ready to run on your device.  Skip ahead to
 the next section.
 
@@ -97,6 +110,10 @@ Start [`etcher`](https://www.balena.io/etcher/), point it to the zip file, and
 follow the prompts:
 
 ![etcher screenshot](assets/etcher.png)
+
+IMPORTANT: There's no way to configure the initial WiFi credentials with
+`etcher`. If you have a device that you can only access via WiFi (so no way of
+setting credentials), then check out the `fwup` instructions above.
 
 ## GRiSP 2 installation
 
@@ -379,7 +396,7 @@ more information:
 * [SPI](https://hex.pm/packages/circuits_spi)
 * [UART](https://hex.pm/packages/circuits_uart)
 
-At some point you'll want to create your own firmware. See the [Nerves
+At some point you may want to create your own firmware. See the [Nerves
 Installation](https://hexdocs.pm/nerves/installation.html) and [Getting
 Started](https://hexdocs.pm/nerves/getting-started.html) guides for details.
 
