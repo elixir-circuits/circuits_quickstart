@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.4.15 - 2022-05-08
+
+Updates:
+
+* Support WiFi configuration when making the MicroSD card when using `fwup`.
+  Thanks to @mnishiguchi for this.
+
 ## v0.4.14 - 2022-03-18
 
 Updates:
