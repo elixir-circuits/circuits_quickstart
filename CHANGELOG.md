@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.4.16 - 2022-05-25
+
+Updates:
+
+* Update to `nerves_system_br v1.19.0`-based systems (Erlang/OTP 25.0). This
+  enables the JIT on the RPi4
+
 ## v0.4.15 - 2022-05-08
 
 Updates:
