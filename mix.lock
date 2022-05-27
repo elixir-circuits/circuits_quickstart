@@ -37,7 +37,7 @@
   "power_control": {:git, "https://github.com/cjfreeze/power_control.git", "9935fda59aa4661bfc4da38cc1d84f8bc37303bf", []},
   "property_table": {:hex, :property_table, "0.2.0", "d47549d9c75c4f8975ca126b48a21c879c76e73d7e7dd0cc65b7d1619b3a198f", [:mix], [], "hexpm", "00f89af46c1f45e572c8386744c773fbf506f731648538d350b9a96720021f0d"},
   "ramoops_logger": {:hex, :ramoops_logger, "0.3.0", "c909408f5ec775c12ea3e06fb883c380fdd0f1c019a1f43426c2a9935cde62a7", [:mix], [], "hexpm", "f84f8b6e6a74d19a92f29bd746ba292068792d28f6963cea2de94d7b24afd593"},
-  "ring_logger": {:hex, :ring_logger, "0.8.4", "d2e5ade1bb12659ea47c6318940daea1524e9c29dd0447aa1c321673e7b55b89", [:mix], [{:circular_buffer, "~> 0.4.0", [hex: :circular_buffer, repo: "hexpm", optional: false]}], "hexpm", "ef768710fae0f6439b95595cd6fffda2a2a49011eaca812cf94dd8ebb0f5d397"},
+  "ring_logger": {:hex, :ring_logger, "0.8.5", "e807c5b29993cb5e64afbcff41a5a7c44c44f3293ee17dd6601439b408f48903", [:mix], [{:circular_buffer, "~> 0.4.0", [hex: :circular_buffer, repo: "hexpm", optional: false]}], "hexpm", "1a29ec270ed9961b1b999a378bce5ea47d4ea9f3a3b8c53c67c05562b897e31b"},
   "shoehorn": {:hex, :shoehorn, "0.9.1", "8e12670024c2942e3c2fdd27cd5a034ee0337ee7c25c37b3ebc2ad482de67199", [:mix], [], "hexpm", "fccd040ac22de9b3cc111bbf78a363832c7210010a3fff4a550fbb2f10de0692"},
   "ssh_subsystem_fwup": {:hex, :ssh_subsystem_fwup, "0.6.0", "821b9cdf52b8dcc286183bce7641e62589373642a10180cd4cadd8e322bc4e8e", [:mix], [], "hexpm", "e5bcc923af4ae49368177437d20383730d096281beb18e9e9a36806aff1ca750"},
   "system_registry": {:hex, :system_registry, "0.8.2", "df791dc276652fcfb53be4dab823e05f8269b96ac57c26f86a67838dbc0eefe7", [:mix], [], "hexpm", "f7acdede22c73ab0b3735eead7f2095efb2a7a6198366564205274db2ca2a8f8"},
