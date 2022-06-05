@@ -55,7 +55,7 @@ defmodule CircuitsQuickstart.MixProject do
       {:ramoops_logger, "~> 0.1"},
 
       # Dependencies for all targets except :host
-      {:nerves_runtime, "~> 0.11.3", targets: @all_targets},
+      {:nerves_runtime, "~> 0.12.0", targets: @all_targets},
       {:nerves_pack, "~> 0.7.0", targets: @all_targets},
 
       # Dependencies for specific targets
