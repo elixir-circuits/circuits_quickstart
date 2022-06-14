@@ -23,6 +23,14 @@ config :nerves_ssh,
     {:auth_method_kb_interactive_data, &CircuitsQuickstart.ssh_show_prompt/3}
   ]
 
+# Common VintageNet configuration
+#
+# regulatory_domain - 00 (global), change to "US", etc.
+# additional_name_servers - Set to try mdns_lite's DNS bridge first
+config :vintage_net,
+  regulatory_domain: "00",
+  additional_name_servers: [{127, 0, 0, 53}]
+
 config :mdns_lite,
   # The `host` key specifies what hostnames mdns_lite advertises.  `:hostname`
   # advertises the device's hostname.local. For the official Nerves systems, this
@@ -32,7 +40,10 @@ config :mdns_lite,
 
   hosts: [:hostname, "nerves"],
   ttl: 120,
-
+  dns_bridge_enabled: true,
+  dns_bridge_ip: {127, 0, 0, 53},
+  dns_bridge_port: 53,
+  dns_bridge_recursive: false,
   # Advertise the following services over mDNS.
   services: [
     %{
