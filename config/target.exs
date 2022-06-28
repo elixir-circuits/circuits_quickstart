@@ -12,6 +12,12 @@ config :shoehorn, init: [:nerves_runtime, :nerves_pack]
 
 config :nerves, :erlinit, hostname_pattern: "nerves-%s"
 
+# Use Ringlogger as the logger backend and remove :console.
+# See https://hexdocs.pm/ring_logger/readme.html for more information on
+# configuring ring_logger.
+
+config :logger, backends: [RingLogger, RamoopsLogger]
+
 # Configure the device for SSH IEx prompt access and firmware updates
 #
 # * See https://hexdocs.pm/nerves_ssh/readme.html for general SSH configuration
@@ -32,11 +38,13 @@ config :vintage_net,
   additional_name_servers: [{127, 0, 0, 53}]
 
 config :mdns_lite,
-  # The `host` key specifies what hostnames mdns_lite advertises.  `:hostname`
+  # The `hosts` key specifies what hostnames mdns_lite advertises.  `:hostname`
   # advertises the device's hostname.local. For the official Nerves systems, this
-  # is "nerves-<4 digit serial#>.local".  mdns_lite also advertises
-  # "nerves.local" for convenience. If more than one Nerves device is on the
-  # network, delete "nerves" from the list.
+  # is "nerves-<4 digit serial#>.local".  The `"nerves"` host causes mdns_lite
+  # to advertise "nerves.local" for convenience. If more than one Nerves device
+  # is on the network, it is recommended to delete "nerves" from the list
+  # because otherwise any of the devices may respond to nerves.local leading to
+  # unpredictable behavior.
 
   hosts: [:hostname, "nerves"],
   ttl: 120,
