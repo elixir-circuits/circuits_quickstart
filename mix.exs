@@ -14,7 +14,8 @@ defmodule CircuitsQuickstart.MixProject do
     :osd32mp1,
     :x86_64,
     :npi_imx6ull,
-    :grisp2
+    :grisp2,
+    :mangopi_mq_pro
   ]
 
   def project do
@@ -69,7 +70,8 @@ defmodule CircuitsQuickstart.MixProject do
       {:nerves_system_osd32mp1, "~> 0.10", runtime: false, targets: :osd32mp1},
       {:nerves_system_x86_64, "~> 1.19", runtime: false, targets: :x86_64},
       {:nerves_system_npi_imx6ull, "~> 0.6", runtime: false, targets: :npi_imx6ull},
-      {:nerves_system_grisp2, "~> 0.3", runtime: false, targets: :grisp2}
+      {:nerves_system_grisp2, "~> 0.3", runtime: false, targets: :grisp2},
+      {:nerves_system_mangopi_mq_pro, "~> 0.1", runtime: false, targets: :mangopi_mq_pro}
     ]
   end
 
