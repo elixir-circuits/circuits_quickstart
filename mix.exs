@@ -42,7 +42,7 @@ defmodule CircuitsQuickstart.MixProject do
   defp deps do
     [
       # Dependencies for all targets
-      {:nerves, "~> 1.7.17 or ~> 1.8.0", runtime: false},
+      {:nerves, "~> 1.8.0", runtime: false},
       {:shoehorn, "~> 0.9.0"},
       {:ring_logger, "~> 0.8.1"},
       {:toolshed, "~> 0.2.13"},
@@ -56,7 +56,7 @@ defmodule CircuitsQuickstart.MixProject do
       {:ramoops_logger, "~> 0.1", targets: @all_targets},
 
       # Dependencies for all targets except :host
-      {:nerves_runtime, "~> 0.12.0", targets: @all_targets},
+      {:nerves_runtime, "~> 0.13.0", targets: @all_targets},
       {:nerves_pack, "~> 0.7.0", targets: @all_targets},
 
       # Dependencies for specific targets
