@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.5.0 - 2022-07-08
+
+Updates:
+
+* Update to `nerves_system_br v1.20.0`-based systems (Erlang/OTP 25.0.2,
+  Buildroot 2022.05, GCC 11.3)
+* Update to Nerves 1.8.0
+* Remove default US WiFi regulatory domain. The default is now `00` for globally
+  allowed frequencies.
+* Add support for MangoPi MQ Pro (64-bit RISC-V device)
+
 ## v0.4.16 - 2022-05-25
 
 Updates:
