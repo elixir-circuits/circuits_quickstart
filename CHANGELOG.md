@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.5.1 - 2022-08-08
+
+Updates:
+
+* Update to `nerves_system_br v1.20.4`-based systems (Erlang/OTP 25.0.3,
+  Buildroot 2022.05, GCC 11.3)
+
 ## v0.5.0 - 2022-07-08
 
 Updates:
