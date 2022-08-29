@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.5.2 - 2022-08-29
+
+Updates:
+
+* USB gadget mode networking works on the MangoPi MQ-Pro now
+* Add `pinout` package. Run `Pinout.print` to see what pins go where
+
 ## v0.5.1 - 2022-08-08
 
 Updates:
