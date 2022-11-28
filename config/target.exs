@@ -4,7 +4,7 @@ import Config
 # docs for separating out critical OTP applications such as those
 # involved with firmware updates.
 
-config :shoehorn, init: [:nerves_runtime, :nerves_pack]
+config :shoehorn, init: [:nerves_runtime]
 
 # Erlinit can be configured without a rootfs_overlay. See
 # https://github.com/nerves-project/erlinit/ for more information on
@@ -16,7 +16,7 @@ config :nerves, :erlinit, update_clock: true
 # See https://hexdocs.pm/ring_logger/readme.html for more information on
 # configuring ring_logger.
 
-config :logger, backends: [RingLogger, RamoopsLogger]
+config :logger, backends: [RingLogger]
 
 # Configure the device for SSH IEx prompt access and firmware updates
 #

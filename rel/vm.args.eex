@@ -16,7 +16,7 @@
 
 ## Load code at system startup
 ## See http://erlang.org/doc/system_principles/system_principles.html#code-loading-strategy
--mode embedded
+#-mode embedded
 
 ## Disable scheduler busy wait to reduce idle CPU usage and avoid delaying
 ## other OS processes. See http://erlang.org/doc/man/erl.html#+sbwt
@@ -29,7 +29,7 @@
 -kernel shell_history enabled
 
 ## Enable heartbeat monitoring of the Erlang runtime system
--heart -env HEART_BEAT_TIMEOUT 30
+-heart -env HEART_BEAT_TIMEOUT 120
 
 ## Start the Elixir shell
 
