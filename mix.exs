@@ -53,7 +53,7 @@ defmodule CircuitsQuickstart.MixProject do
       {:circuits_spi, "~> 1.2"},
       {:pinout, "~> 0.1"},
       {:power_control, github: "cjfreeze/power_control"},
-      {:ramoops_logger, "~> 0.1", targets: @all_targets},
+      {:ramoops_logger, "~> 0.3", targets: @all_targets},
 
       # Dependencies for all targets except :host
       {:nerves_runtime, "~> 0.13.0", targets: @all_targets},
