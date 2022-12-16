@@ -10,7 +10,7 @@ config :shoehorn, init: [:nerves_runtime, :nerves_pack]
 # https://github.com/nerves-project/erlinit/ for more information on
 # configuring erlinit.
 
-config :nerves, :erlinit, hostname_pattern: "nerves-%s"
+config :nerves, :erlinit, update_clock: true
 
 # Use Ringlogger as the logger backend and remove :console.
 # See https://hexdocs.pm/ring_logger/readme.html for more information on
