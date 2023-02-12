@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.5.5 - 2023-02-11
+
+Updates:
+
+* Update Nerves systems to `nerves_system_br v1.22.1` (Erlang/OTP 25.2,
+  Buildroot 2022.11)
+* Update all dependencies to latest
+
 ## v0.5.4 - 2022-12-19
 
 Updates:
