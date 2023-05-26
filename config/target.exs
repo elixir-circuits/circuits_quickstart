@@ -52,6 +52,7 @@ config :mdns_lite,
   dns_bridge_ip: {127, 0, 0, 53},
   dns_bridge_port: 53,
   dns_bridge_recursive: false,
+  ipv4_only: false,
   # Advertise the following services over mDNS.
   services: [
     %{
