@@ -20,6 +20,6 @@ defmodule CircuitsQuickstart do
     ssh circuits@#{name}.local # Use password "circuits"
     """
 
-    {'Elixir Circuits Quickstart', to_charlist(msg), 'Password: ', false}
+    {~c"Elixir Circuits Quickstart", to_charlist(msg), ~c"Password: ", false}
   end
 end
