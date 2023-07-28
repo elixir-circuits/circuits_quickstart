@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.6.1 - 2023-07-28
+
+* Fixes
+  * UART, I2C, and SPI PMODs should work on GRiSP2 boards now
+
+* Updates
+  * Update Nerves systems to `nerves_system_br v1.23.2` (Erlang/OTP 26.0.2,
+    Buildroot 2023.02.3)
+  * Update to Elixir 1.15.4
+
 ## v0.6.0 - 2023-07-14
 
 Updates:
