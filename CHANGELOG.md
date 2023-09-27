@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.7.0 - 2023-09-27
+
+* Updates
+  * Update Nerves systems to `nerves_system_br v1.24.0` (Erlang/OTP 26.1,
+    Buildroot 2023.05.2)
+  * Update to Elixir 1.15.6
+
 ## v0.6.1 - 2023-07-28
 
 * Fixes
