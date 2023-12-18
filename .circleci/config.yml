@@ -148,6 +148,20 @@ jobs:
       MIX_TARGET: osd32mp1
     <<: *build
 
+  build_rpi5:
+    <<: *defaults
+    environment:
+      <<: *elixir_version
+      MIX_TARGET: rpi5
+    <<: *build
+
+  build_rpi0_2:
+    <<: *defaults
+    environment:
+      <<: *elixir_version
+      MIX_TARGET: rpi0_2
+    <<: *build
+
   build_rpi4:
     <<: *defaults
     environment:
@@ -239,6 +253,16 @@ jobs:
       - restore_cache:
           key: nerves/deploy/{{ checksum ".target" }}-{{ .Revision }}-{{ .Environment.CIRCLE_TAG }}
       - run:
+          name: rpi5
+          command: echo "rpi5" > .target
+      - restore_cache:
+          key: nerves/deploy/{{ checksum ".target" }}-{{ .Revision }}-{{ .Environment.CIRCLE_TAG }}
+      - run:
+          name: rpi0_2
+          command: echo "rpi0_2" > .target
+      - restore_cache:
+          key: nerves/deploy/{{ checksum ".target" }}-{{ .Revision }}-{{ .Environment.CIRCLE_TAG }}
+      - run:
           name: rpi4
           command: echo "rpi4" > .target
       - restore_cache:
@@ -313,6 +337,16 @@ workflows:
           filters:
             tags:
               only: /.*/
+      - build_rpi0_2:
+          context: org-global
+          filters:
+            tags:
+              only: /.*/
+      - build_rpi5:
+          context: org-global
+          filters:
+            tags:
+              only: /.*/
       - build_rpi4:
           context: org-global
           filters:
@@ -372,12 +406,14 @@ workflows:
           context: org-global
           requires:
             - build_osd32mp1
+            - build_rpi5
             - build_rpi4
             - build_rpi3a
             - build_rpi3
             - build_rpi2
             - build_rpi
             - build_rpi0
+            - build_rpi0_2
             - build_bbb
             - build_npi_imx6ull
             - build_grisp2
