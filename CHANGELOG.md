@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.8.0 - 2023-12-18
+
+* Updates
+  * Update Nerves systems to `nerves_system_br v1.25.2` (Erlang/OTP 26.1.2,
+    Buildroot 2023.08.4)
+  * Add experimental Raspberry Pi 5 image (rpi5)`
+  * Add 64-bit Raspberry Pi Zero W (rpi0_2)
+  * Update Circuits.I2C and Circuits.SPI to v2 versions
+  * Update all other dependencies to latest
+
 ## v0.7.1 - 2023-10-09
 
 * Updates
