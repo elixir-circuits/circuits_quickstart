@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.8.1 - 2023-12-28
+
+* Updates
+  * Fix Raspberry Pi 3 (`rpi3`) regression in v0.8.0 that prevented it from
+    booting.
+  * Update Elixir to 1.16.0
+
 ## v0.8.0 - 2023-12-18
 
 * Updates
