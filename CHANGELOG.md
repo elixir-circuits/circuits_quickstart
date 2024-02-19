@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.9.0 - 2024-02-18
+
+* Updates
+  * Update Nerves systems to `nerves_system_br v1.26.1` (Erlang/OTP 26.2.2,
+    Buildroot 2023.11.1)
+  * Update Circuits.GPIO to v2
+  * Update all other dependencies to latest
+
 ## v0.8.1 - 2023-12-28
 
 * Updates
