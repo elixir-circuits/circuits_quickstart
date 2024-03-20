@@ -76,12 +76,12 @@ fwup`. For Linux and Windows, see the [fwup installation
 instructions](https://github.com/fwup-home/fwup#installing).
 
 ```console
-λ ~/fwup circuits_quickstart_rpi0.fw
+$ fwup circuits_quickstart_rpi0.fw
 Use 15.84 GB memory card found at /dev/rdisk2? [y/N] y
 ```
 
-Depending on your OS, you'll likely be asked to authenticate this action. Go
-ahead and do so.
+Depending on your OS, you'll be asked to authenticate this action. You can also
+use `sudo`. Go ahead and do so.
 
 ```console
 |====================================| 100% (31.81 / 31.81) MB
@@ -93,9 +93,7 @@ If you're using a WiFi-enabled device and want the WiFi credentials to be
 written to the MicroSD card, initialize the MicroSD card like this instead:
 
 ```sh
-export NERVES_WIFI_SSID='access_point'
-export NERVES_WIFI_PASSPHRASE='passphrase'
-fwup circuits_quickstart_rpi0.fw
+NERVES_WIFI_SSID='access_point' NERVES_WIFI_PASSPHRASE='passphrase' fwup circuits_quickstart_rpi0.fw
 ```
 
 You can still change the WiFi credentials at runtime using
