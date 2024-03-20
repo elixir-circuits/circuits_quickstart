@@ -34,8 +34,11 @@ defmodule CircuitsQuickstart.Application do
   end
 
   defp wlan0_unconfigured?() do
-    "wlan0" in VintageNet.configured_interfaces() and
-      VintageNet.get_configuration("wlan0") == %{type: VintageNetWiFi}
+    config = VintageNet.get_configuration("wlan0")
+
+    config == %{type: VintageNetWiFi} or match?(%{vintage_net_wifi: %{networks: []}}, config)
+  catch
+    _, _ -> false
   end
 
   defp true?(""), do: false
