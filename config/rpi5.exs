@@ -8,3 +8,7 @@ config :vintage_net,
     {"eth0", %{type: VintageNetEthernet, ipv4: %{method: :dhcp}}},
     {"wlan0", %{type: VintageNetWiFi}}
   ]
+
+# The RPi5 doesn't support WPA3 yet, but it also doesn't fail with the generic
+# configuration. This will enable WPA3 support when it's available.
+config :vintage_net_wifi, :quick_configure, &VintageNetWiFi.Cookbook.generic/2
