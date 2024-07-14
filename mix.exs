@@ -54,7 +54,6 @@ defmodule CircuitsQuickstart.MixProject do
       {:circuits_i2c, "~> 2.0"},
       {:circuits_spi, "~> 2.0"},
       {:pinout, "~> 0.1"},
-      {:power_control, github: "cjfreeze/power_control"},
       {:ramoops_logger, "~> 0.3", targets: @all_targets},
 
       # Dependencies for all targets except :host
