@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.11.0 - 2024-06-14
+
+* Updates
+  * Update Nerves systems to `nerves_system_br v1.28.1` (Erlang/OTP 26.7, Buildroot 2024.05)
+  * Update to Elixir 1.17.2
+  * Remove `power_control` dependency
+
 ## v0.10.2 - 2024-05-06
 
 * Updates
