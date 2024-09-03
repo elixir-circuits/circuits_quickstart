@@ -70,7 +70,7 @@ defmodule CircuitsQuickstart.MixProject do
       {:nerves_system_rpi3a, "~> 1.27", runtime: false, targets: :rpi3a},
       {:nerves_system_rpi4, "~> 1.27", runtime: false, targets: :rpi4},
       {:nerves_system_rpi5, "~> 0.2", runtime: false, targets: :rpi5},
-      {:nerves_system_bbb, "~> 2.22", runtime: false, targets: :bbb},
+      {:nerves_system_bbb, "~> 2.24", runtime: false, targets: :bbb},
       {:nerves_system_osd32mp1, "~> 0.18", runtime: false, targets: :osd32mp1},
       {:nerves_system_x86_64, "~> 1.27", runtime: false, targets: :x86_64},
       {:nerves_system_npi_imx6ull, "~> 0.15", runtime: false, targets: :npi_imx6ull},
