@@ -1,9 +1,17 @@
 # Changelog
 
+## v0.11.1 - 2024-09-03
+
+* Fixes
+  * Fix unreliable Ethernet PHY on Beaglebones
+
+* Updates
+  * Update Nerves systems to `nerves_system_br v1.28.3` (Erlang/OTP 27.0.1, Buildroot 2024.05.2)
+
 ## v0.11.0 - 2024-06-14
 
 * Updates
-  * Update Nerves systems to `nerves_system_br v1.28.1` (Erlang/OTP 26.7, Buildroot 2024.05)
+  * Update Nerves systems to `nerves_system_br v1.28.1` (Erlang/OTP 27.0, Buildroot 2024.05)
   * Update to Elixir 1.17.2
   * Remove `power_control` dependency
 
