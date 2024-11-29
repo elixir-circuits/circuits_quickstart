@@ -116,8 +116,7 @@ setting credentials), then check out the `fwup` instructions above.
 
 ## GRiSP 2 installation
 
-GRiSP 2 support is VERY new. While it should be safe, it's probably a good idea
-to skim the
+Before you start, take a quick skim of the
 [instructions](https://github.com/grisp/grisp_demo/tree/sylane/make-image) for
 re-installing the GRiSP demo app. If that doesn't look that hard, then let's
 continue:
