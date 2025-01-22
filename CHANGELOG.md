@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.12.1 - 2025-01-21
+
+* Updates
+  * Update Nerves systems to `nerves_system_br v1.29.3` (Erlang/OTP 27.2). This
+    adds support for the Raspberry Pi CM5.
+  * Update to Elixir 1.18.1
+
 ## v0.12.0 - 2024-11-28
 
 * Updates
