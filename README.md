@@ -1,6 +1,7 @@
 # Elixir Circuits Quickstart Firmware
 
-[![CircleCI](https://circleci.com/gh/elixir-circuits/circuits_quickstart.svg?style=svg)](https://circleci.com/gh/elixir-circuits/circuits_quickstart)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/elixir-circuits/circuits_quickstart/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/elixir-circuits/circuits_quickstart/tree/main)
+[![REUSE status](https://api.reuse.software/badge/github.com/elixir-circuits/circuits_quickstart)](https://api.reuse.software/info/github.com/elixir-circuits/circuits_quickstart)
 
 The Elixir Circuits quickstart firmware lets you try out the Elixir Circuits
 projects on real hardware without needing to create a Nerves project, install

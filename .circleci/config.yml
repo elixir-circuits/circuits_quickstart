@@ -1,3 +1,5 @@
+version: 2.1
+
 defaults: &defaults
   docker:
     - image: hexpm/elixir:1.18.1-erlang-27.2-ubuntu-jammy-20240808
@@ -128,8 +130,6 @@ build_grisp2: &build_grisp2
         paths:
           - ~/deploy
 
-version: 2.0
-
 jobs:
   build_osd32mp1:
     <<: *defaults
@@ -208,6 +208,13 @@ jobs:
     environment:
       MIX_TARGET: grisp2
     <<: *build_grisp2
+
+  check-license:
+    docker:
+      - image: fsfe/reuse:latest
+    steps:
+      - checkout
+      - run: reuse lint
 
   deploy:
     <<: *defaults
@@ -299,7 +306,6 @@ jobs:
           command: gh release edit $CIRCLE_TAG --repo $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME --draft=false
 
 workflows:
-  version: 2
   build_deploy:
     jobs:
       - build_osd32mp1:
@@ -364,6 +370,10 @@ workflows:
               only: /.*/
       - build_grisp2:
           context: org-global
+          filters:
+            tags:
+              only: /.*/
+      - check-license:
           filters:
             tags:
               only: /.*/
