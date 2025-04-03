@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.13.0 - 2025-04-03
+
+* Updates
+  * Update Nerves systems to `nerves_system_br v1.30.0`
+
 ## v0.12.1 - 2025-01-21
 
 * Updates
