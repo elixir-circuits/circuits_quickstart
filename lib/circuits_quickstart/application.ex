@@ -26,7 +26,7 @@ defmodule CircuitsQuickstart.Application do
       ssid = kv["wifi_ssid"]
       passphrase = kv["wifi_passphrase"]
 
-      unless empty?(ssid) do
+      if !empty?(ssid) do
         _ = VintageNetWiFi.quick_configure(ssid, passphrase)
         :ok
       end

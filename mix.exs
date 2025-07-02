@@ -28,8 +28,7 @@ defmodule CircuitsQuickstart.MixProject do
       archives: [nerves_bootstrap: "~> 1.10"],
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      releases: [{@app, release()}],
-      preferred_cli_target: [run: :host, test: :host]
+      releases: [{@app, release()}]
     ]
   end
 
@@ -38,6 +37,10 @@ defmodule CircuitsQuickstart.MixProject do
       mod: {CircuitsQuickstart.Application, []},
       extra_applications: [:logger, :runtime_tools, :inets, :ssl]
     ]
+  end
+
+  def cli do
+    [preferred_targets: [run: :host, test: :host]]
   end
 
   defp deps do
