@@ -3,7 +3,7 @@
 ## v0.13.1 - 2025-07-06
 
 * Updates
-  * Update Nerves systems to `nerves_system_br v1.30.0` (Erlang/OTP 27.3.4.1, Buildroot 2025.02.3)
+  * Update Nerves systems to `nerves_system_br v1.31.3` (Erlang/OTP 27.3.4.1, Buildroot 2025.02.3)
   * Pull in fixes for Elixir 1.19 (not used yet)
 
 ## v0.13.0 - 2025-04-03
