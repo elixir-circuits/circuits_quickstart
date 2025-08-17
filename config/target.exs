@@ -4,13 +4,18 @@ import Config
 # docs for separating out critical OTP applications such as those
 # involved with firmware updates.
 
-config :shoehorn, init: [:nerves_runtime, :nerves_pack]
+config :shoehorn, init: [:nerves_core_dump, :nerves_runtime, :nerves_pack]
 
 # Erlinit can be configured without a rootfs_overlay. See
 # https://github.com/nerves-project/erlinit/ for more information on
 # configuring erlinit.
 
 config :nerves, :erlinit, update_clock: true
+
+# For those Nerves systems that require firmware validation on update,
+# run the default Nerves.Runtime auto-validator.
+
+config :nerves_runtime, auto_validate_firmware: true
 
 # Use Ringlogger as the logger backend and remove :console.
 # See https://hexdocs.pm/ring_logger/readme.html for more information on
