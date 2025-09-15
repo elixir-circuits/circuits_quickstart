@@ -2,7 +2,7 @@ version: 2.1
 
 defaults: &defaults
   docker:
-    - image: hexpm/elixir:1.18.4-erlang-27.3.4.2-ubuntu-jammy-20250714
+    - image: hexpm/elixir:1.18.4-erlang-27.3.4.3-ubuntu-jammy-20250819
   environment:
     MIX_ENV: prod
 
@@ -131,6 +131,12 @@ build_grisp2: &build_grisp2
           - ~/deploy
 
 jobs:
+  build_qemu_aarch64:
+    <<: *defaults
+    environment:
+      MIX_TARGET: qemu_aarch64
+    <<: *build
+
   build_osd32mp1:
     <<: *defaults
     environment:
@@ -225,6 +231,11 @@ jobs:
           name: Create Artifacts Dir
           command: mkdir -p ~/deploy
       - run:
+          name: qemu_aarch64
+          command: echo "qemu_aarch64" > .target
+      - restore_cache:
+          key: nerves/deploy/{{ checksum ".target" }}-{{ .Revision }}-{{ .Environment.CIRCLE_TAG }}
+      - run:
           name: osd32mp1
           command: echo "osd32mp1" > .target
       - restore_cache:
@@ -308,6 +319,11 @@ jobs:
 workflows:
   build_deploy:
     jobs:
+      - build_qemu_aarch64:
+          context: org-global
+          filters:
+            tags:
+              only: /.*/
       - build_osd32mp1:
           context: org-global
           filters:
@@ -380,6 +396,7 @@ workflows:
       - deploy:
           context: org-global
           requires:
+            - build_qemu_aarch64
             - build_osd32mp1
             - build_rpi5
             - build_rpi4

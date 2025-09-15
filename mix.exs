@@ -17,7 +17,8 @@ defmodule CircuitsQuickstart.MixProject do
     :x86_64,
     :npi_imx6ull,
     :grisp2,
-    :mangopi_mq_pro
+    :mangopi_mq_pro,
+    :qemu_aarch64
   ]
 
   def project do
@@ -77,7 +78,8 @@ defmodule CircuitsQuickstart.MixProject do
       {:nerves_system_x86_64, "~> 1.31", runtime: false, targets: :x86_64},
       {:nerves_system_npi_imx6ull, "~> 0.19", runtime: false, targets: :npi_imx6ull},
       {:nerves_system_grisp2, "~> 0.15", runtime: false, targets: :grisp2},
-      {:nerves_system_mangopi_mq_pro, "~> 0.13", runtime: false, targets: :mangopi_mq_pro}
+      {:nerves_system_mangopi_mq_pro, "~> 0.13", runtime: false, targets: :mangopi_mq_pro},
+      {:nerves_system_qemu_aarch64, "~> 0.1", runtime: false, targets: :qemu_aarch64}
     ]
   end
 
