@@ -59,6 +59,11 @@ Pi Zero, Raspberry Pi 4 and BeagleBones are good ones to try first. These boards
 have a lot of functionality and connecting them to a network is a little easier
 than the others.
 
+> **Note:** For an easier experience, you can use [Nerves
+> Burner](https://github.com/nerves-project/nerves_burner) to download and write
+> firmware images directly to your MicroSD card. Nerves Burner provides a
+> user-friendly interface that handles the download and burning process for you.
+
 ## Burning the Firmware for devices that boot from MicroSD
 
 These instructions will work for the Raspberry Pi, Beaglebones and other devices
