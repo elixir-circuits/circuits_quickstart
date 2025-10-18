@@ -14,9 +14,10 @@
 # OS system time.
 +C multi_time_warp
 
-## Load code at system startup
-## See http://erlang.org/doc/system_principles/system_principles.html#code-loading-strategy
--mode embedded
+## Choose whether to load all code at system startup
+## See https://www.erlang.org/doc/system/system_principles.html#code-loading-strategy
+## Slow devices sometimes benefit from choosing embedded mode
+##-mode interactive
 
 # Load code as per the boot script since not using archives
 # See https://www.erlang.org/doc/man/init.html#command-line-flags
