@@ -25,8 +25,8 @@ config :logger, backends: [RingLogger, RamoopsLogger]
 
 config :nerves_ssh,
   daemon_option_overrides: [
-    {:pwdfun, &CircuitsQuickstart.ssh_check_pass/2},
-    {:auth_method_kb_interactive_data, &CircuitsQuickstart.ssh_show_prompt/3}
+    pwdfun: {CircuitsQuickstart, :ssh_check_pass, 2},
+    auth_method_kb_interactive_data: {CircuitsQuickstart, :ssh_show_prompt, 3}
   ]
 
 # Common VintageNet configuration
