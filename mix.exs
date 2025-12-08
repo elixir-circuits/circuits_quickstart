@@ -58,7 +58,7 @@ defmodule CircuitsQuickstart.MixProject do
       {:circuits_i2c, "~> 2.0"},
       {:circuits_spi, "~> 2.0"},
       {:pinout, "~> 0.1"},
-      {:ramoops_logger, "~> 0.3", targets: @all_targets},
+      {:ramoops_logger, "~> 0.4", targets: @all_targets},
 
       # Dependencies for all targets except :host
       {:nerves_runtime, "~> 0.13.0", targets: @all_targets},

@@ -16,7 +16,7 @@ config :nerves, :erlinit, update_clock: true
 # See https://hexdocs.pm/ring_logger/readme.html for more information on
 # configuring ring_logger.
 
-config :logger, backends: [RingLogger, RamoopsLogger]
+config :logger, backends: [RingLogger]
 
 # Configure the device for SSH IEx prompt access and firmware updates
 #
