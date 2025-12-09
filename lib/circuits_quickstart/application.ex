@@ -6,7 +6,7 @@ defmodule CircuitsQuickstart.Application do
   use Application
 
   def start(_type, _args) do
-    if target() != :host do
+    if Nerves.Runtime.mix_target() != :host do
       setup_wifi()
     end
 
@@ -48,8 +48,4 @@ defmodule CircuitsQuickstart.Application do
   defp empty?(""), do: true
   defp empty?(nil), do: true
   defp empty?(_), do: false
-
-  defp target() do
-    Application.get_env(:circuits_quickstart, :target)
-  end
 end
