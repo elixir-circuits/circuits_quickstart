@@ -2,18 +2,10 @@ version = 1
 
 [[annotations]]
 path = [
- ".circleci/config.yml",
- ".formatter.exs",
- ".github/dependabot.yml",
- ".gitignore",
- ".tool-versions",
  "assets/**",
- "CHANGELOG.md",
  "config/**",
  "lib/**",
- "mix.exs",
  "mix.lock",
- "README.md",
  "rel/**",
  "rootfs_overlay/**",
  "REUSE.toml",

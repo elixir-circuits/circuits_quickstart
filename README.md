@@ -1,3 +1,7 @@
+<!--
+  SPDX-FileCopyrightText: None
+  SPDX-License-Identifier: CC0-1.0
+-->
 # Elixir Circuits Quickstart Firmware
 
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/elixir-circuits/circuits_quickstart/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/elixir-circuits/circuits_quickstart/tree/main)
