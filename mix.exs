@@ -68,21 +68,21 @@ defmodule CircuitsQuickstart.MixProject do
       {:nerves_ssh, "~> 1.2", targets: @all_targets},
 
       # Dependencies for specific targets
-      {:nerves_system_rpi, "~> 1.31", runtime: false, targets: :rpi},
-      {:nerves_system_rpi0, "~> 1.31", runtime: false, targets: :rpi0},
-      {:nerves_system_rpi0_2, "~> 1.31", runtime: false, targets: :rpi0_2},
-      {:nerves_system_rpi2, "~> 1.31", runtime: false, targets: :rpi2},
-      {:nerves_system_rpi3, "~> 1.31", runtime: false, targets: :rpi3},
-      {:nerves_system_rpi3a, "~> 1.31", runtime: false, targets: :rpi3a},
-      {:nerves_system_rpi4, "~> 1.31", runtime: false, targets: :rpi4},
+      {:nerves_system_rpi, "~> 1.33", runtime: false, targets: :rpi},
+      {:nerves_system_rpi0, "~> 1.33", runtime: false, targets: :rpi0},
+      {:nerves_system_rpi0_2, "~> 1.33", runtime: false, targets: :rpi0_2},
+      {:nerves_system_rpi2, "~> 1.33", runtime: false, targets: :rpi2},
+      {:nerves_system_rpi3, "~> 1.33", runtime: false, targets: :rpi3},
+      {:nerves_system_rpi3a, "~> 1.33", runtime: false, targets: :rpi3a},
+      {:nerves_system_rpi4, "~> 1.33", runtime: false, targets: :rpi4},
       {:nerves_system_rpi5, "~> 0.6", runtime: false, targets: :rpi5},
-      {:nerves_system_bbb, "~> 2.27", runtime: false, targets: :bbb},
+      {:nerves_system_bbb, "~> 2.29", runtime: false, targets: :bbb},
       {:nerves_system_osd32mp1, "~> 0.22", runtime: false, targets: :osd32mp1},
-      {:nerves_system_x86_64, "~> 1.31", runtime: false, targets: :x86_64},
+      {:nerves_system_x86_64, "~> 1.33", runtime: false, targets: :x86_64},
       {:nerves_system_npi_imx6ull, "~> 0.19", runtime: false, targets: :npi_imx6ull},
       {:nerves_system_grisp2, "~> 0.15", runtime: false, targets: :grisp2},
       {:nerves_system_mangopi_mq_pro, "~> 0.13", runtime: false, targets: :mangopi_mq_pro},
-      {:nerves_system_qemu_aarch64, "~> 0.1", runtime: false, targets: :qemu_aarch64}
+      {:nerves_system_qemu_aarch64, "~> 0.3", runtime: false, targets: :qemu_aarch64}
     ]
   end
 
