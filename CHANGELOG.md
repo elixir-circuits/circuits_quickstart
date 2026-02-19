@@ -4,6 +4,19 @@
 -->
 # Changelog
 
+## v0.15.0 - 2026-02-18
+
+This updates the Raspberry Pi Nerves systems to their 2.0 versions. If upgrading
+an existing device, the MicroSD/eMMC layout will be upgraded to support the
+Raspberry Pi Tryboot feature. It's not possible to downgrade to the old layout
+without manually reflashing.
+
+All other supported devices just have patch updates for the new Erlang and
+Buildroot versions.
+
+* Updates
+  * Update Nerves systems to `nerves_system_br v1.33.1 (Erlang/OTP 28.3.1, Buildroot 2025.11.1)
+
 ## v0.14.0 - 2026-01-07
 
 * Updates
