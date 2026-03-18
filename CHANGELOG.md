@@ -4,6 +4,13 @@
 -->
 # Changelog
 
+## v0.15.1 - 2026-03-18
+
+This is a security and bug fix update.
+
+* Updates
+  * Update Nerves systems to `nerves_system_br v1.33.4 (Erlang/OTP 28.4.1, Buildroot 2025.11.2)
+
 ## v0.15.0 - 2026-02-18
 
 This updates the Raspberry Pi Nerves systems to their 2.0 versions. If upgrading
