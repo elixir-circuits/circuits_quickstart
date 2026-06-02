@@ -11,7 +11,7 @@ The Elixir Circuits quickstart firmware lets you try out the Elixir Circuits
 projects on real hardware without needing to create a Nerves project, install
 Elixir on Raspbian on a Raspberry Pi or compiling any Elixir code at all.
 Within minutes, you'll have a device running Nerves. You'll be able to explore
-the Nerves environment with [toolshed](https://hexdocs.pm/toolshed/readme.html),
+the Nerves environment with [toolshed](https://toolshed.hexdocs.pm/readme.html),
 and you'll be able to blink LEDs from the device itself. You'll also be able to
 explore the other Elixir Circuits libraries and experiment with
 [I2C](https://hex.pm/packages/circuits_i2c),
@@ -406,8 +406,8 @@ more information:
 * [UART](https://hex.pm/packages/circuits_uart)
 
 At some point you may want to create your own firmware. See the [Nerves
-Installation](https://hexdocs.pm/nerves/installation.html) and [Getting
-Started](https://hexdocs.pm/nerves/getting-started.html) guides for details.
+Installation](https://nerves.hexdocs.pm/installation.html) and [Getting
+Started](https://nerves.hexdocs.pm/getting-started.html) guides for details.
 
 To build the Elixir Circuits Quickstart firmware, make sure that you have run
 through the Nerves installation steps. Then open a terminal window and run the
