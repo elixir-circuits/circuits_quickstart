@@ -1,5 +1,5 @@
 defmodule CircuitsQuickstart.Application do
-  # See https://hexdocs.pm/elixir/Application.html
+  # See https://elixir.hexdocs.pm/Application.html
   # for more information on OTP Applications
   @moduledoc false
 
@@ -11,7 +11,7 @@ defmodule CircuitsQuickstart.Application do
       setup_wifi()
     end
 
-    # See https://hexdocs.pm/elixir/Supervisor.html
+    # See https://elixir.hexdocs.pm/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: CircuitsQuickstart.Supervisor]
 
@@ -21,7 +21,7 @@ defmodule CircuitsQuickstart.Application do
   end
 
   defp advertise_device() do
-    # See https://hexdocs.pm/nerves_discovery/
+    # See https://nerves-discovery.hexdocs.pm/
     MdnsLite.add_mdns_service(%{
       id: :nerves_device,
       protocol: "nerves-device",
