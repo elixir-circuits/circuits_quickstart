@@ -4,6 +4,16 @@
 -->
 # Changelog
 
+## v0.16.0 - 2026-06-28
+
+This release adds support for Nerves Starter Kit and Goatmire badge.
+
+* Updates
+  * Update Nerves systems to `nerves_system_br v1.34.0 (Erlang/OTP 29.0.2, Buildroot 2026.05)
+  * Remove GRiSP2, OSD32MP1, and NPI imx6ull. These devices need Linux kernel
+    updates to work with the new GCC 15.3 toolchains.
+  * Bump many dependencies to their latest
+
 ## v0.15.3 - 2026-06-03
 
 This is a security and bug fix update.

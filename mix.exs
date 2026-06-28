@@ -4,7 +4,7 @@ defmodule CircuitsQuickstart.MixProject do
   use Mix.Project
 
   @app :circuits_quickstart
-  @version "0.15.3"
+  @version "0.16.0"
   @all_targets [
     :rpi,
     :rpi0,
