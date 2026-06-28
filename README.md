@@ -53,6 +53,7 @@ by the boards they support:
 * `rpi3a` - Raspberry Pi 3 Model A+ and Raspberry Pi Zero 2 W
 * `rpi4` - Raspberry Pi 4 Model B
 * `rpi5` - Raspberry Pi 5
+* `trellis` - Nerves Starter Kit, Goatmire Badge, and other Protolux Trellis-based boards
 * `mangopi_mq_pro` - An Allwinner D1 (RISC-V) board
 * `x86_64` - A generic 64-bit x86_64 build
 * `qemu_aarch64` - A generic 64-bit ARM build suitable for QEMU

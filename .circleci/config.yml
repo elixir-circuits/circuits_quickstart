@@ -94,6 +94,12 @@ jobs:
       MIX_TARGET: qemu_aarch64
     <<: *build
 
+  build_trellis:
+    <<: *defaults
+    environment:
+      MIX_TARGET: trellis
+    <<: *build
+
   build_rpi5:
     <<: *defaults
     environment:
@@ -175,6 +181,11 @@ jobs:
       - restore_cache:
           key: nerves/deploy/{{ checksum ".target" }}-{{ .Revision }}-{{ .Environment.CIRCLE_TAG }}
       - run:
+          name: trellis
+          command: echo "trellis" > .target
+      - restore_cache:
+          key: nerves/deploy/{{ checksum ".target" }}-{{ .Revision }}-{{ .Environment.CIRCLE_TAG }}
+      - run:
           name: rpi5
           command: echo "rpi5" > .target
       - restore_cache:
@@ -253,6 +264,11 @@ workflows:
           filters:
             tags:
               only: /.*/
+      - build_trellis:
+          context: org-global
+          filters:
+            tags:
+              only: /.*/
       - build_rpi0_2:
           context: org-global
           filters:
@@ -311,6 +327,7 @@ workflows:
           context: org-global
           requires:
             - build_qemu_aarch64
+            - build_trellis
             - build_rpi5
             - build_rpi4
             - build_rpi3a

@@ -15,6 +15,7 @@ defmodule CircuitsQuickstart.MixProject do
     :rpi4,
     :rpi5,
     :bbb,
+    :trellis,
     :x86_64,
     :mangopi_mq_pro,
     :qemu_aarch64
@@ -76,6 +77,7 @@ defmodule CircuitsQuickstart.MixProject do
       {:nerves_system_rpi4, "~> 2.0", runtime: false, targets: :rpi4},
       {:nerves_system_rpi5, "~> 2.0", runtime: false, targets: :rpi5},
       {:nerves_system_bbb, "~> 2.29", runtime: false, targets: :bbb},
+      {:nerves_system_trellis, "~> 0.4", runtime: false, targets: :trellis},
       {:nerves_system_x86_64, "~> 1.33", runtime: false, targets: :x86_64},
       {:nerves_system_mangopi_mq_pro, "~> 0.13", runtime: false, targets: :mangopi_mq_pro},
       {:nerves_system_qemu_aarch64, "~> 0.3", runtime: false, targets: :qemu_aarch64}
