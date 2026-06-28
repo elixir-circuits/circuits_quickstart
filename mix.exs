@@ -15,10 +15,7 @@ defmodule CircuitsQuickstart.MixProject do
     :rpi4,
     :rpi5,
     :bbb,
-    :osd32mp1,
     :x86_64,
-    :npi_imx6ull,
-    :grisp2,
     :mangopi_mq_pro,
     :qemu_aarch64
   ]
@@ -79,10 +76,7 @@ defmodule CircuitsQuickstart.MixProject do
       {:nerves_system_rpi4, "~> 2.0", runtime: false, targets: :rpi4},
       {:nerves_system_rpi5, "~> 2.0", runtime: false, targets: :rpi5},
       {:nerves_system_bbb, "~> 2.29", runtime: false, targets: :bbb},
-      {:nerves_system_osd32mp1, "~> 0.22", runtime: false, targets: :osd32mp1},
       {:nerves_system_x86_64, "~> 1.33", runtime: false, targets: :x86_64},
-      {:nerves_system_npi_imx6ull, "~> 0.19", runtime: false, targets: :npi_imx6ull},
-      {:nerves_system_grisp2, "~> 0.15", runtime: false, targets: :grisp2},
       {:nerves_system_mangopi_mq_pro, "~> 0.13", runtime: false, targets: :mangopi_mq_pro},
       {:nerves_system_qemu_aarch64, "~> 0.3", runtime: false, targets: :qemu_aarch64}
     ]

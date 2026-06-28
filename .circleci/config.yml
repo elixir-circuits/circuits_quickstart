@@ -4,7 +4,7 @@ version: 2.1
 
 defaults: &defaults
   docker:
-    - image: hexpm/elixir:1.19.5-erlang-28.5.0.1-ubuntu-resolute-20260421
+    - image: hexpm/elixir:1.20.2-erlang-29.0.2-ubuntu-resolute-20260610
   environment:
     MIX_ENV: prod
 
@@ -87,62 +87,11 @@ build: &build
         paths:
           - ~/deploy
 
-build_grisp2: &build_grisp2
-  steps:
-    - checkout
-    - <<: *install_system_deps
-    - <<: *install_fwup
-    - <<: *install_hex_rebar
-    - run: echo "$MIX_TARGET" > .target
-    - run:
-        name: Fetch Deps
-        command: |
-          n=0
-          until [ $n -ge 5 ]; do
-            mix deps.get && break
-            n=$((n+1))
-            echo "Error while fetching deps. Retrying in 5 seconds"
-            sleep 5
-          done
-    - run:
-        name: Check formatting
-        command: mix format --check-formatted
-    - run:
-        name: Build
-        command: mix compile
-    - run:
-        name: Create firmware
-        command: |
-          mix firmware.image
-    - run:
-          name: Create artifacts dir
-          command: mkdir -p ~/deploy/artifacts
-    - run:
-        name: Copy firmware file
-        command: |
-          cp _build/*/nerves/images/*.fw ~/deploy/artifacts/circuits_quickstart_${MIX_TARGET}.fw
-          gzip -k circuits_quickstart.img
-          cp circuits_quickstart.img.gz ~/deploy/artifacts/circuits_quickstart_${MIX_TARGET}.img.gz
-          cp ./CHANGELOG.md ~/deploy/CHANGELOG.md
-    - store_artifacts:
-        path: ~/deploy
-        destination: images
-    - save_cache:
-        key: nerves/deploy/{{ checksum ".target" }}-{{ .Revision }}-{{ .Environment.CIRCLE_TAG }}
-        paths:
-          - ~/deploy
-
 jobs:
   build_qemu_aarch64:
     <<: *defaults
     environment:
       MIX_TARGET: qemu_aarch64
-    <<: *build
-
-  build_osd32mp1:
-    <<: *defaults
-    environment:
-      MIX_TARGET: osd32mp1
     <<: *build
 
   build_rpi5:
@@ -199,23 +148,11 @@ jobs:
       MIX_TARGET: bbb
     <<: *build
 
-  build_npi_imx6ull:
-    <<: *defaults
-    environment:
-      MIX_TARGET: npi_imx6ull
-    <<: *build
-
   build_mangopi_mq_pro:
     <<: *defaults
     environment:
       MIX_TARGET: mangopi_mq_pro
     <<: *build
-
-  build_grisp2:
-    <<: *defaults
-    environment:
-      MIX_TARGET: grisp2
-    <<: *build_grisp2
 
   check-license:
     docker:
@@ -235,11 +172,6 @@ jobs:
       - run:
           name: qemu_aarch64
           command: echo "qemu_aarch64" > .target
-      - restore_cache:
-          key: nerves/deploy/{{ checksum ".target" }}-{{ .Revision }}-{{ .Environment.CIRCLE_TAG }}
-      - run:
-          name: osd32mp1
-          command: echo "osd32mp1" > .target
       - restore_cache:
           key: nerves/deploy/{{ checksum ".target" }}-{{ .Revision }}-{{ .Environment.CIRCLE_TAG }}
       - run:
@@ -288,18 +220,8 @@ jobs:
       - restore_cache:
           key: nerves/deploy/{{ checksum ".target" }}-{{ .Revision }}-{{ .Environment.CIRCLE_TAG }}
       - run:
-          name: npi_imx6ull
-          command: echo "npi_imx6ull" > .target
-      - restore_cache:
-          key: nerves/deploy/{{ checksum ".target" }}-{{ .Revision }}-{{ .Environment.CIRCLE_TAG }}
-      - run:
           name: mangopi_mq_pro
           command: echo "mangopi_mq_pro" > .target
-      - restore_cache:
-          key: nerves/deploy/{{ checksum ".target" }}-{{ .Revision }}-{{ .Environment.CIRCLE_TAG }}
-      - run:
-          name: grisp2
-          command: echo "grisp2" > .target
       - restore_cache:
           key: nerves/deploy/{{ checksum ".target" }}-{{ .Revision }}-{{ .Environment.CIRCLE_TAG }}
       - run:
@@ -327,11 +249,6 @@ workflows:
   build_deploy:
     jobs:
       - build_qemu_aarch64:
-          context: org-global
-          filters:
-            tags:
-              only: /.*/
-      - build_osd32mp1:
           context: org-global
           filters:
             tags:
@@ -381,17 +298,7 @@ workflows:
           filters:
             tags:
               only: /.*/
-      - build_npi_imx6ull:
-          context: org-global
-          filters:
-            tags:
-              only: /.*/
       - build_mangopi_mq_pro:
-          context: org-global
-          filters:
-            tags:
-              only: /.*/
-      - build_grisp2:
           context: org-global
           filters:
             tags:
@@ -404,7 +311,6 @@ workflows:
           context: org-global
           requires:
             - build_qemu_aarch64
-            - build_osd32mp1
             - build_rpi5
             - build_rpi4
             - build_rpi3a
@@ -414,8 +320,6 @@ workflows:
             - build_rpi0
             - build_rpi0_2
             - build_bbb
-            - build_npi_imx6ull
-            - build_grisp2
             - build_mangopi_mq_pro
           filters:
             branches:

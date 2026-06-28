@@ -46,7 +46,6 @@ extension and if you're using `etcher`, get the `zip` file. Releases are named
 by the boards they support:
 
 * `bbb` - BeagleBone Black, BeagleBone Green, PocketBeagle, etc.
-* `grisp2` - [GRiSP2](https://www.grisp.org/) (Experimental)
 * `rpi0` - Raspberry Pi Zero or Zero W
 * `rpi` - The original Raspberry Pi Model B
 * `rpi2` Raspberry Pi 2 Model B
@@ -54,9 +53,9 @@ by the boards they support:
 * `rpi3a` - Raspberry Pi 3 Model A+ and Raspberry Pi Zero 2 W
 * `rpi4` - Raspberry Pi 4 Model B
 * `rpi5` - Raspberry Pi 5
-* `osd32mp1` - Octavo OSD32MP1-BRK
-* `npi_imx6ull` - Seeed Studio imx6ull (select the MicroSD boot mode switches)
 * `mangopi_mq_pro` - An Allwinner D1 (RISC-V) board
+* `x86_64` - A generic 64-bit x86_64 build
+* `qemu_aarch64` - A generic 64-bit ARM build suitable for QEMU
 
 Some of these are easier than others to use. If you have a choice, the Raspberry
 Pi Zero, Raspberry Pi 4 and BeagleBones are good ones to try first. These boards
