@@ -66,6 +66,7 @@ defmodule CircuitsQuickstart.MixProject do
       {:nerves_runtime, "~> 0.13.0", targets: @all_targets},
       {:nerves_pack, "~> 0.7.0", targets: @all_targets},
       {:nerves_ssh, "~> 1.2", targets: @all_targets},
+      {:vintage_net_wifi, "~> 0.12.11", targets: @all_targets},
 
       # Dependencies for specific targets
       {:nerves_system_rpi, "~> 2.0", runtime: false, targets: :rpi},
