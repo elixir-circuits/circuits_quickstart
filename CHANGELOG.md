@@ -4,6 +4,15 @@
 -->
 # Changelog
 
+## v0.16.1 - 2026-07-20
+
+* Updates
+  * Update Trellis/Nerves Starter Kit to allow use of all GPIO on the expansion
+    port
+  * Update MangoPi MQ Pro to use the mainline Linux kernel
+  * Update Circuits.GPIO for multi-GPIO support and Circuits.SPI for the
+    auto-segmentation support
+
 ## v0.16.0 - 2026-06-28
 
 This release adds support for Nerves Starter Kit and Goatmire badge.
