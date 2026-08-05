@@ -4,6 +4,11 @@
 -->
 # Changelog
 
+## v0.16.2 - 2026-08-05
+
+* Updates
+  * Update Nerves systems to `nerves_system_br v1.34.1 (Erlang/OTP 29.0.4, Buildroot 2026.05.1)
+
 ## v0.16.1 - 2026-07-20
 
 * Updates
