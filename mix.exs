@@ -49,8 +49,7 @@ defmodule CircuitsQuickstart.MixProject do
   defp deps do
     [
       # Dependencies for all targets
-      {:nerves, "~> 1.11", runtime: false},
-      {:shoehorn, "~> 0.9.0"},
+      {:nerves, "~> 2.0.0-pre.2", runtime: false},
       {:ring_logger, "~> 0.11.7"},
       {:logger_backends, "~> 1.0"},
       {:toolshed, "~> 0.3"},
@@ -90,8 +89,8 @@ defmodule CircuitsQuickstart.MixProject do
     [
       overwrite: true,
       cookie: "#{@app}_cookie",
-      include_erts: &Nerves.Release.erts/0,
-      steps: [&Nerves.Release.init/1, :assemble],
+      include_erts: &Nerves.erts/0,
+      steps: [&Nerves.init_release/1, :assemble],
       strip_beams: [keep: ["Docs"]]
     ]
   end
