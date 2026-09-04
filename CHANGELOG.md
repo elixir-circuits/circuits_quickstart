@@ -4,6 +4,14 @@
 -->
 # Changelog
 
+## v0.17.0 - 2026-09-04
+
+This is a non-backwards compatible update for the Nerves Starter Kit and other
+Trellis-based boards. You'll need to reflash the board to use it.
+
+* Updates
+  * Update Nerves systems to `nerves_system_br v1.34.4 (Erlang/OTP 29.0.6, Buildroot 2026.05.2)
+
 ## v0.16.2 - 2026-08-05
 
 * Updates
