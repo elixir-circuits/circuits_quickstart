@@ -4,7 +4,7 @@ version: 2.1
 
 defaults: &defaults
   docker:
-    - image: hexpm/elixir:1.20.3-erlang-29.0.5-ubuntu-resolute-20260724.1
+    - image: hexpm/elixir:1.20.4-erlang-29.0.6-ubuntu-resolute-20260811.1
   environment:
     MIX_ENV: prod
 
