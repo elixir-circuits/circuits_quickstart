@@ -4,7 +4,7 @@ import Config
 # docs for separating out critical OTP applications such as those
 # involved with firmware updates.
 
-config :shoehorn, init: [:nerves_runtime, :nerves_pack]
+config :shoehorn, init: [:logger_backends, :nerves_runtime, :nerves_pack]
 
 config :nerves_runtime, startup_guard_enabled: true
 
@@ -14,11 +14,9 @@ config :nerves_runtime, startup_guard_enabled: true
 
 config :nerves, :erlinit, update_clock: true
 
-# Use Ringlogger as the logger backend and remove :console.
-# See https://ring-logger.hexdocs.pm/readme.html for more information on
-# configuring ring_logger.
-
-config :logger, backends: [RingLogger]
+# Default to not starting so that the console logger isn't started. See
+# runtime.exs for logger configuration.
+config :logger, :default_handler, false
 
 # Configure the device for SSH IEx prompt access and firmware updates
 #
