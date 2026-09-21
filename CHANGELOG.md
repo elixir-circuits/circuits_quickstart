@@ -4,6 +4,13 @@
 -->
 # Changelog
 
+## v0.17.1 - 2026-09-21
+
+* Updates
+  * Add LoggerBackends to fix logger deprecation warning that prints to the
+    console on boot
+  * Bump `ssh_subsystem_fwup` to work around `mix upload` issue with Erlang 29.0.6
+
 ## v0.17.0 - 2026-09-04
 
 This is a non-backwards compatible update for the Nerves Starter Kit and other
