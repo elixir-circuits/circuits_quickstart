@@ -4,6 +4,12 @@
 -->
 # Changelog
 
+## v0.18.0 - 2026-10-14
+
+* Updates
+  * Update Nerves to 2.0.0-pre.4
+  * Update all dependencies
+
 ## v0.17.1 - 2026-09-21
 
 * Updates
