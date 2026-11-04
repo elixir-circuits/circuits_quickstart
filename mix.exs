@@ -49,7 +49,8 @@ defmodule CircuitsQuickstart.MixProject do
   defp deps do
     [
       # Dependencies for all targets
-      {:nerves, "~> 2.0.0-pre.2", runtime: false},
+      {:nerves, "~> 2.0.0-pre.5", runtime: false},
+      {:nerves_treeshake, github: "nerves-project/nerves_treeshake", runtime: false},
       {:ring_logger, "~> 0.11.7"},
       {:logger_backends, "~> 1.0"},
       {:toolshed, "~> 0.3"},

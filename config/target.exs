@@ -1,5 +1,35 @@
 import Config
 
+config :nerves_treeshake,
+  enabled: true,
+  keep_applications: [
+    :circuits_i2c,
+    :circuits_spi,
+    :circuits_gpio,
+    :circuits_uart,
+    :ramoops_logger,
+    :pinout,
+    :vintage_net,
+    :vintage_net_wifi,
+    :vintage_net_direct,
+    :nerves_time
+  ],
+  keep: [
+    # Temporary workaround: treeshake cannot follow dynamic RecordCb calls.
+    mfa: {:tls_record, :lowest_protocol_version, 1},
+    mfa: {:tls_record, :highest_protocol_version, 1},
+    # Temporary workaround: treeshake needs to preserve gen_statem's named StateName/3 callbacks.
+    behaviour_impls: :gen_statem,
+    # Temporary workaround: treeshake needs to follow shared TLS StateName/3 delegation.
+    mod: :tls_dtls_client_connection,
+    # Temporary workaround: treeshake needs to follow dynamic Connection:close/4 calls.
+    mfa: {:tls_gen_connection, :close, 4},
+    # Temporary workaround: treeshake needs to follow path_validation_cb/1 module selection.
+    mfa: {:tls_handshake_1_3, :path_validation, 10},
+    mfa: {:ssl_handshake, :path_validation, 10}
+  ],
+  debug: true
+
 config :nerves, application_sort: [init: [:logger_backends, :nerves_runtime, :nerves_pack]]
 
 config :nerves_runtime, startup_guard_enabled: true
